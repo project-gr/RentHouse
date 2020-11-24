@@ -1,12 +1,14 @@
--- Create table
-
--- Student
-Create table dbo.StudentAccount (
-	Student_username varchar (30) Primary Key NOT NULL,
-	Student_password varchar (30)
+-- User
+Create table Users (
+	Username varchar (30) Primary Key NOT NULL,
+	Password varchar (30) NOT NULL,
+	Usertype varchar (30) NOT NULL,
+	CONSTRAINT CHK_User 
+	CHECK (Usertype = 'Student' OR Usertype = 'Landlord' OR Usertype = 'Staff')
 );
 
-Create table dbo.StudentInfo (
+-- Student
+Create table StudentInfo (
 	StudentID varchar (30) Primary Key NOT NULL,
 	Student_Name varchar (30),
 	Student_Phone varchar (30),
@@ -16,21 +18,17 @@ Create table dbo.StudentInfo (
 
 Create table dbo.Student (
 	StudentID varchar (30) NOT NULL,
-	Student_username varchar(30) NOT NULL,
-	primary key(StudentID, Student_username),
+	Username varchar(30) NOT NULL,
+	primary key(StudentID, Username),
 	foreign key (StudentID) references StudentInfo (StudentID)
         on delete cascade
         on update cascade,
-    foreign key (Student_username) references StudentAccount(Student_username)
+    foreign key (Username) references Users(Username)
         on delete cascade
         on update cascade
 );
 
 -- Landlord
-Create table dbo.LandlordAccount (
-	Landlord_username varchar (30) Primary Key NOT NULL,
-	Landlord_password varchar (30)
-);
 
 Create table dbo.LandlordInfo (
 	LandlordID varchar (30) Primary Key NOT NULL,
@@ -41,23 +39,34 @@ Create table dbo.LandlordInfo (
 
 Create table dbo.Landlord (
 	LandlordID varchar (30) NOT NULL,
-	Landlord_username varchar(30) NOT NULL,
-	primary key(LandlordID, Landlord_username),
+	Username varchar(30) NOT NULL,
+	primary key(LandlordID, Username),
 	foreign key (LandlordID) references LandlordInfo (LandlordID)
         on delete cascade
         on update cascade,
-    foreign key (Landlord_username) references LandlordAccount(Landlord_username)
+    foreign key (Username) references Users(Username)
         on delete cascade
         on update cascade
 );
 
 -- Staff
-Create table dbo.Staff (
-	Staff_username varchar(30) Primary Key NOT NULL,
-	Staff_password varchar (30),
+Create table dbo.StaffInfo (
+	StaffID varchar(30) Primary Key NOT NULL,
 	Staff_Name varchar (30),
 	Staff_Phone varchar (30),
 	Staff_Email varchar (30)
+);
+
+Create table dbo.Staff (
+	StaffID varchar (30) NOT NULL,
+	Username varchar(30) NOT NULL,
+	primary key(StaffID, Username),
+	foreign key (StaffID) references StaffInfo (StaffID)
+        on delete cascade
+        on update cascade,
+    foreign key (Username) references Users(Username)
+        on delete cascade
+        on update cascade
 );
 
 -- House
@@ -107,49 +116,15 @@ INSERT INTO House VALUES (
 	@House_Status
 );
 
--- House...
-Create table House_Landlord (
-	LandlordID varchar (30) NOT NULL,
-	HouseID VARCHAR(30) NOT NULL,
-	primary key(LandlordID, HouseID),
-	foreign key (LandlordID) references LandlordInfo (LandlordID)
-        on delete cascade
-        on update cascade,
-    foreign key (HouseID) references House (HouseID)
-        on delete cascade
-        on update cascade
-);
-
-Create table House_Student (
-	StudentID varchar (30) NOT NULL,
-	HouseID VARCHAR(30) NOT NULL,
-	primary key(StudentID, HouseID),
-	foreign key (StudentID) references StudentInfo (StudentID)
-        on delete cascade
-        on update cascade,
-    foreign key (HouseID) references House (HouseID)
-        on delete cascade
-        on update cascade
-);
-
 -- Test
-INSERT INTO House(House_Status)
-VALUES ('true');
+INSERT INTO Users (Username, Password, Usertype)
+VALUES ('chokem', 'chokem', 'Staff');
 
-INSERT INTO LandlordInfo(LandlordID)
-VALUES ('chokem');
-
-INSERT INTO House_Landlord(LandlordID, HouseID)
-VALUES ('chokem', 'House_00000001');
-
--- Display
+select * from Users
 select * from StudentInfo
-select * from StudentAccount
 select * from Student
 select * from LandlordInfo
-select * from LandlordAccount
 select * from Landlord
-select * from House
-select * from House_Landlord
-select * from House_Student
+select * from StaffInfo
 select * from Staff
+select * from House
