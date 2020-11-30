@@ -10,6 +10,7 @@ package com.renthouse.bean;
  * @author Ren
  */
 public class Users {
+    
     private String username;
     private String password;
     private String usertype;

@@ -38,7 +38,7 @@ public class StudentDAO implements DAO<Student>{
         boolean b = false;
         
         try {
-            String query = "insert into Student (StudentID, Student_Name, Student_Phone, Student_Email, Student_Status"
+            String query = "insert into StudentInfo (StudentID, Student_Name, Student_Phone, Student_Email, Student_Status"
                     + "(" + student.getStudentID()+ ", " + student.getStudentName()+ ", " + student.getStudentPhone()
                     + ", " + student.getStudentMail() + ", " + student.getStudentStatus()+ ")";
             conn = DBcontext.getConnection();

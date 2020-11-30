@@ -5,7 +5,6 @@
  */
 package com.renthouse.dao;
 
-import com.renthouse.bean.Landlord;
 import com.renthouse.bean.Users;
 import com.renthouse.context.DBcontext;
 import java.sql.Connection;
@@ -37,9 +36,10 @@ public class UserDAO implements DAO<Users>{
             rs = ps.executeQuery();
             
             while (rs.next()) {                
-                Users user = new Users (rs.getString(1), rs.getString(2), rs.getString(3));
+                Users user = new Users(rs.getString(1), rs.getString(2), rs.getString(3));
                 return user;
             }
+            
         } catch (Exception e) {
         }
         return null;
@@ -103,5 +103,5 @@ public class UserDAO implements DAO<Users>{
     public boolean update(Users item) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

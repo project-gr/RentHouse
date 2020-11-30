@@ -10,6 +10,7 @@ package com.renthouse.bean;
  * @author Ren
  */
 public class Staff {
+    
     private String staffID;
     private String staffName;
     private String staffPhone;
