@@ -25,7 +25,7 @@ public class UserDAO implements DAO<UserBean>{
     
     public UserBean checkLogin (String username, String password) {
         try {
-            String query = "select * from users where username = ? and pass = ?";
+            String query = "select * from Users where Username = ? and Password = ?";
             conn = new DBcontext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, username);

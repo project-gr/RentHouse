@@ -42,13 +42,13 @@ public class LoginControl extends HttpServlet {
             UserBean userBean = userDAO.checkLogin(username, password);
             
             if (userBean == null) {
-                request.getRequestDispatcher("Login.jsp").include(request, response);
+                request.getRequestDispatcher("Signin.jsp").include(request, response);
             } else if (userBean.getUsertype() == "Student") {
                 request.getRequestDispatcher("StudentrAccount.jsp").forward(request, response);
             } else if (userBean.getUsertype() == "Landlord") {
                 request.getRequestDispatcher("LandlordAccount.jsp").forward(request, response);
             } else {
-                request.getRequestDispatcher("StaffAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("Home.jsp").forward(request, response);
             }
         }
     }

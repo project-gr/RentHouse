@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Logout
-    Created on : Nov 24, 2020, 2:38:48 PM
+    Document   : Home
+    Created on : Nov 30, 2020, 5:39:24 PM
     Author     : Ren
 --%>
 
@@ -12,9 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            session.invalidate();
-            response.sendRedirect("Home.jsp");
-        %>
+        <h1>Hello World!</h1>
     </body>
 </html>
