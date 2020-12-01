@@ -20,20 +20,9 @@
         <div class="container">
             <div class="forms-container">
                 <div class="signin-signup">
-                    <form action="#" class="sign-up-form">
-                        <h2 class="title">Sign up</h2>
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Name" name="name"/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" placeholder="Email" name="email"/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-phone"></i>
-                            <input type="text" placeholder="Phone" name="phone"/>
-                        </div>
+
+                    <form action="SignUpControl" class="sign-up-form"> <%-- Sign up control --%>
+                        <h2 class="title" >Sign up</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="Username" name="username" required/>
@@ -42,10 +31,28 @@
                             <i class="fas fa-lock"></i>
                             <input type="password" placeholder="Password" name="password" required/>
                         </div>
-                        <div>
-                            <input type="checkbox" name="role">
-                            <label for="role">I am a landlord.</label>
+<!--                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Full Name" name="fname"/>
                         </div>
+                        <div class="input-field">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Email" name="email"/>
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-phone"></i>
+                            <input type="text" placeholder="Phone" name="phone"/>
+                        </div>-->
+                        <div>
+                            <select class="input-field" id="type" name="type" style="width:400px;" >
+                                <option value="Landlord"> Landlord</option>
+                                <option value="Student" selected> Student </option>
+                            </select>
+                        </div>
+                        <!--                        <div>
+                                                    <input type="checkbox" name="role">
+                                                    <label for="role">I am a landlord.</label>
+                                                </div>-->
                         <input type="submit" class="btn" value="Sign Up" />
                         <p class="social-text">Or Sign up with social platforms</p>
                         <div class="social-media">
@@ -74,9 +81,9 @@
                             If you have an account,
                             please press this button to Sign in!
                         </p>
-                        <button class="btn transparent" onclick="location.href='SignIn.jsp'">Sign in</button>
+                        <button class="btn transparent" onclick="location.href = 'SignIn.jsp'">Sign in</button>
                     </div>
-                    
+
                     <img src="signUp.svg" class="image" alt="">
                 </div>
             </div>

@@ -44,6 +44,27 @@ public class UserDAO implements DAO<Users>{
         }
         return null;
     }
+    
+    @Override
+    public boolean add(Users user) throws SQLException {
+        boolean b = false;
+        
+        try {
+            String query = "insert into Users values (?, ?, ?);";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getUsertype());
+            rs = ps.executeQuery();
+            
+            b = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
 
     @Override
     public List<Users> getList() throws SQLException {
@@ -75,25 +96,7 @@ public class UserDAO implements DAO<Users>{
         }
         return userList;
     }
-
-    @Override
-    public boolean add(Users user) throws SQLException {
-        boolean b = false;
-        
-        try {
-            String query = "insert into Users (Username, Password, Usertype"
-                    + "(" + user.getUsername() + ", " + user.getPassword() + ", " + user.getUsertype() + ")";
-            conn = DBcontext.getConnection();
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-            
-            b = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return b;
-    }
-
+    
     @Override
     public boolean delete(String id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

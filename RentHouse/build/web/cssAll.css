@@ -18,6 +18,14 @@ body, input {
     font-family: "Poppins", sans-serif;
 }
 
+select {
+  text-align: center;
+  text-align-last: center;
+}
+option {
+  text-align: center;
+}
+
 .container {
     position: relative;
     width: 100%;
@@ -64,7 +72,7 @@ form {
     width: 100%;
     background-color: #f0f0f0;
     margin: 10px 0;
-    height: 55px;
+    height: 45px;
     border-radius: 55px;
     display: grid;
     grid-template-columns: 15% 85%;
@@ -74,7 +82,7 @@ form {
 
 .input-field i {
     text-align: center;
-    line-height: 55px;
+    line-height: 45px;
     color: #acacac;
     transition: 0.5s;
     font-size: 1.1rem;
@@ -106,8 +114,8 @@ form {
 }
 
 .social-icon {
-    height: 46px;
-    width: 46px;
+    height: 40px;
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,7 +138,7 @@ form {
     background-color: #5995fd;
     border: none;
     outline: none;
-    height: 49px;
+    height: 42px;
     border-radius: 49px;
     color: #fff;
     text-transform: uppercase;
