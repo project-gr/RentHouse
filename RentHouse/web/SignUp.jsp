@@ -22,27 +22,34 @@
                 <div class="signin-signup">
 
                     <form action="SignUpControl" class="sign-up-form"> <%-- Sign up control --%>
-                        <h2 class="title" >Sign up</h2>
+                        <h2 class="title">Create your account</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="Username" name="username" required/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" name="password" required/>
+                            <input type="password" placeholder="Password" name="password" required id="password">
                         </div>
-<!--                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Full Name" name="fname"/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-envelope"></i>
-                            <input type="email" placeholder="Email" name="email"/>
-                        </div>
-                        <div class="input-field">
-                            <i class="fas fa-phone"></i>
-                            <input type="text" placeholder="Phone" name="phone"/>
+                        <!--                        <div class="input-field">
+                                                                            <i class="fas fa-user"></i>
+                                                                            <input type="text" placeholder="Full Name" name="fname"/>
+                                                                        </div>
+                                                                        <div class="input-field">
+                                                                            <i class="fas fa-envelope"></i>
+                                                                            <input type="email" placeholder="Email" name="email"/>
+                                                                        </div>
+                                                                        <div class="input-field">
+                                                                            <i class="fas fa-phone"></i>
+                                                                            <input type="text" placeholder="Phone" name="phone"/>
                         </div>-->
+                        <div class="input-field">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Confirm Password" name="confpassword" required id="confpassword"/>
+                        </div>
+                        <div>
+                            <input type="checkbox" onclick="myFunction()"> Show Password
+                        </div>
                         <div>
                             <select class="input-field" id="type" name="type" style="width:400px;" >
                                 <option value="Landlord"> Landlord</option>
@@ -50,10 +57,10 @@
                             </select>
                         </div>
                         <!--                        <div>
-                                                    <input type="checkbox" name="role">
-                                                    <label for="role">I am a landlord.</label>
-                                                </div>-->
-                        <input type="submit" class="btn" value="Sign Up" />
+                                                                            <input type="checkbox" name="role">
+                                                                            <label for="role">I am a landlord.</label>
+                        </div>-->
+                        <input type="submit" class="btn" value="Create account"  onclick="return Validate()"/>
                         <p class="social-text">Or Sign up with social platforms</p>
                         <div class="social-media">
                             <a href="#" class="social-icon">
@@ -89,5 +96,6 @@
             </div>
         </div>
         <script type="text/javascript" src="js1.js"></script>
+        <script type="text/javascript" src="js2.js"></script>
     </body>
 </html>

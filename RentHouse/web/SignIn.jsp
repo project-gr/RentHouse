@@ -30,9 +30,13 @@
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" name="password" required>
+                            <input type="password" placeholder="Password" name="password" id="password" required>
+                        </div>
+                        <div>
+                            <input type="checkbox" onclick="myFunction()"> Show Password
                         </div>
                         <input type="submit" value="Sign in" class="btn solid">
+                        <a href="ResetPassword.jsp" style="font-family: sans-serif;">Forgot password</a>
 
                         <p class="social-text">Or Sign in With social platforms</p>
                         <div class="social-media">
@@ -66,6 +70,7 @@
                     <img src="signIn.svg" class="image" alt="">
                 </div>
             </div>
-        </div>    
+        </div>  
+        <script type="text/javascript" src="js2.js"></script>
     </body>
 </html>

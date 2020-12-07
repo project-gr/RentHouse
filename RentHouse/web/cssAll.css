@@ -80,9 +80,9 @@ form {
     position: relative;
 }
 
+
 .input-field i {
     text-align: center;
-    line-height: 45px;
     color: #acacac;
     transition: 0.5s;
     font-size: 1.1rem;
