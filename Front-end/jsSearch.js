@@ -7,17 +7,17 @@
 
 $(document).ready(function() {
     $(".dropdown-search").click(function() {
-        $(".dropdown-seach-list ul").toggleClass("active");
+        $(".dropdown-search-list ul").toggleClass("active");
     });
     
     $(".dropdown-search-list ul li").click(function() {
-        var icon_text = $(this).html();
-        $(".default-option").html(icon_text);
+        var icon_text = $(this).text();
+        $(".default-option").text(icon_text);
     });
     
     $(document).on("click", function(event) {
         if(!$(event.target).closest(".dropdown-search").length) {
-            $(".dropdown-seach-list ul").removeClass("active");
+            $(".dropdown-search-list ul").removeClass("active");
         }
     });
 });

@@ -15,7 +15,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="cssHome.css">
         <link rel="stylesheet" type="text/css" href="cssSearch.css">
-        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -95,7 +94,7 @@
                         <div class="form-group">
                             <div class="dropdown-search">
                                 <div class="default-option">Category</div>
-                                <div class="dropdown-seach-list">
+                                <div class="dropdown-search-list">
                                     <ul>
                                         <li><i class="fas fa-road">&nbsp;</i>Street</li>
                                         <li><i class="fas fa-archway">&nbsp;</i>District</li>
@@ -114,6 +113,6 @@
                 </div>
             </section>
         </main>
-        <script type="text/javascript" src="jsSearch.js"></script>
+        <script src="jsSearch.js"></script>
     </body>
 </html>
