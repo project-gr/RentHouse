@@ -5,13 +5,8 @@
  */
 package com.renthouse.control;
 
-import com.renthouse.bean.Users;
-import com.renthouse.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Ren
  */
-@WebServlet(name = "SignUpControl", urlPatterns = {"/SignUpControl"})
-public class SignUpControl extends HttpServlet {
+@WebServlet(name = "InfoControl", urlPatterns = {"/InfoControl"})
+public class InfoControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,30 +34,16 @@ public class SignUpControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
             String fname = request.getParameter("fname");
+            String ID = request.getParameter("ID");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
-            String type = request.getParameter("type");
-
-            UserDAO userDAO = new UserDAO();
-            Users check = userDAO.checkLogin(username, password);
-
-            if (check == null) {
-                Users user = new Users(username, password, type);
-
-                userDAO.add(user);
-                request.getRequestDispatcher("CreateInfo.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("SignIn.jsp").include(request, response);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SignUpControl.class.getName()).log(Level.SEVERE, null, ex);
+            
+            
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

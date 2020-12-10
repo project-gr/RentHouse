@@ -35,7 +35,7 @@
                                 <a href="#">Home</a>
                             </li>
                             <li class="nav-link">
-                                <a href="#">City<i class="fas fa-caret-down"></i></a>
+                                <a href="">City<i class="fas fa-caret-down"></i></a>
                                 <div class="dropdown">
                                     <ul>
                                         <li class="dropdown-link">
@@ -72,14 +72,14 @@
                                 </div>
                             </li>
                             <li class="nav-link">
-                                <a href="#">About us</a>
+                                <a href="https://github.com/project-gr/RentHouse">About us</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="log-sign">
-                        <a href="Signin.jsp" class="btn transparent">Sign In</a>
-                        <a href="Signup.jsp" class="btn solid">Sign Up</a>
+                        <a href="SignIn.jsp" class="btn transparent">Sign In</a>
+                        <a href="SignUp.jsp" class="btn solid">Sign Up</a>
                     </div>
                 </div>
 

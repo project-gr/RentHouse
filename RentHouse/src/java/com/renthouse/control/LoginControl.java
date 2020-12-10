@@ -42,7 +42,7 @@ public class LoginControl extends HttpServlet {
             Users user = userDAO.checkLogin(username, password);
             
             if (user == null) {
-                request.getRequestDispatcher("Signin.jsp").include(request, response);
+                request.getRequestDispatcher("SignIn.jsp").include(request, response);
             } else if (user.getUsertype() == "Student") {
                 request.getRequestDispatcher("Home.jsp").forward(request, response);
             } else if (user.getUsertype() == "Landlord") {
