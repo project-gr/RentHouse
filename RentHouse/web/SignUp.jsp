@@ -1,6 +1,6 @@
 <%-- 
     Document   : SignUp
-    Created on : Nov 30, 2020, 7:37:54 PM
+    Created on : Nov 30, 2020, 5:40:28 PM
     Author     : Ren
 --%>
 
@@ -15,52 +15,57 @@
         <link rel="stylesheet" type="text/css" href="cssAll.css">
         <link rel="stylesheet" type="text/css" href="cssSignUp.css">
         <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+        
+        <!--Java Script-->
+        <script type="text/javascript" src="myFunction.js"></script>
     </head>
+    
     <body>
         <div class="container">
             <div class="forms-container">
                 <div class="signin-signup">
 
+                    <!--Form-->
                     <form action="SignUpControl" class="sign-up-form"> <%-- Sign up control --%>
-                        <h2 class="title">Create your account</h2>
+                        <h2 class="title" > Create new account </h2>
+
+                        <!--Username-->
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="Username" name="username" required/>
                         </div>
+
+                        <!--Password-->
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" name="password" required id="password">
+                            <input type="password" placeholder="Password" id="password" name="password" required/>
+                            <span class="eye" onclick="showPassword()">
+                                <i id="hide" class="fa fa-eye"></i>
+                                <i id="show" class="fa fa-eye-slash"></i>
+                            </span>
                         </div>
-                        <!--                        <div class="input-field">
-                                                                            <i class="fas fa-user"></i>
-                                                                            <input type="text" placeholder="Full Name" name="fname"/>
-                                                                        </div>
-                                                                        <div class="input-field">
-                                                                            <i class="fas fa-envelope"></i>
-                                                                            <input type="email" placeholder="Email" name="email"/>
-                                                                        </div>
-                                                                        <div class="input-field">
-                                                                            <i class="fas fa-phone"></i>
-                                                                            <input type="text" placeholder="Phone" name="phone"/>
-                        </div>-->
+
+                        <!--Confirm Password-->
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Confirm Password" name="confpassword" required id="confpassword"/>
+                            <input type="password" placeholder="Confirm Password" id="confirmPassword" name="confirmPassword" required/>
+                            <span class="eye" onclick="showConfirmPassword()">
+                                <i id="hide1" class="fa fa-eye"></i>
+                                <i id="show1" class="fa fa-eye-slash"></i>
+                            </span>
                         </div>
-                        <div>
-                            <input type="checkbox" onclick="myFunction()"> Show Password
-                        </div>
+
+                        <!--Type-->
                         <div>
                             <select class="input-field" id="type" name="type" style="width:400px;" >
                                 <option value="Landlord"> Landlord</option>
                                 <option value="Student" selected> Student </option>
                             </select>
                         </div>
-                        <!--                        <div>
-                                                                            <input type="checkbox" name="role">
-                                                                            <label for="role">I am a landlord.</label>
-                        </div>-->
-                        <input type="submit" class="btn" value="Create account"  onclick="return Validate()"/>
+                        
+                        <!--Submit-->
+                        <input type="submit" class="btn" value="Sign Up" onclick="return Validate()"/>
+                        
                         <p class="social-text">Or Sign up with social platforms</p>
                         <div class="social-media">
                             <a href="#" class="social-icon">
@@ -79,7 +84,8 @@
                     </form>
                 </div>
             </div>
-
+                        
+            <!--Go to Sign in-->
             <div class="panels-container">
                 <div class="panel left-panel">
                     <div class="content">
@@ -95,7 +101,5 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="js1.js"></script>
-        <script type="text/javascript" src="js2.js"></script>
     </body>
 </html>

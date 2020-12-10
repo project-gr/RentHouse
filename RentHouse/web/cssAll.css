@@ -4,9 +4,25 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Nov 30, 2020, 7:38:07 PM
+    Created on : Nov 30, 2020, 6:07:34 PM
     Author     : Ren
 */
+.fa {
+    margin-right: 30px;
+}
+
+.eye {
+    position: absolute;
+    right: 0;
+}
+
+#hide {
+    display: none;
+}
+
+#hide1 {
+    display: none;
+}
 
 * {
     margin: 0;
@@ -19,11 +35,11 @@ body, input {
 }
 
 select {
-  text-align: center;
-  text-align-last: center;
+    text-align: center;
+    text-align-last: center;
 }
 option {
-  text-align: center;
+    text-align: center;
 }
 
 .container {
@@ -80,9 +96,9 @@ form {
     position: relative;
 }
 
-
 .input-field i {
     text-align: center;
+    line-height: 45px;
     color: #acacac;
     transition: 0.5s;
     font-size: 1.1rem;

@@ -8,12 +8,16 @@ and open the template in the editor.
     Author     : Ren
 */
 
+
+
 @media screen and (max-width: 870px) {
+
     .container {
-        min-height: 700px;
+        min-height: 900px;
         height: 100vh;
+        margin: auto;
     }
-    
+
     .signin-signup {
         width: 100%;
         top: 100%;
@@ -115,5 +119,13 @@ and open the template in the editor.
     .container.sign-up-mode:before {
         bottom: 28%;
         left: 50%;
+    }
+
+    .eye {
+        position: absolute;
+    }
+
+    #hide {
+        display: none;
     }
 }

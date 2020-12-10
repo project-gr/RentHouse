@@ -1,6 +1,6 @@
 <%-- 
     Document   : SignIn
-    Created on : Nov 30, 2020, 7:37:37 PM
+    Created on : Nov 30, 2020, 7:01:25 PM
     Author     : Ren
 --%>
 
@@ -15,6 +15,9 @@
         <link rel="stylesheet" type="text/css" href="cssAll.css">
         <link rel="stylesheet" type="text/css" href="cssSignIn.css">
         <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+        <!--Java Script-->
+        <script type="text/javascript" src="myFunction.js"></script>
     </head>
 
     <%-- Sign in --%>
@@ -22,21 +25,29 @@
         <div class="container">
             <div class="forms-container">
                 <div class="signin-signup">
+
+                    <%-- Sign in form --%>
                     <form action="LoginControl" class="sign-in-form"> <%-- Login Control --%>
                         <h2 class="title">Sign in</h2>
+
+                        <!--Username-->
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="Username" name="username" required>
                         </div>
+
+                        <!--Password-->
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" name="password" id="password" required>
+                            <input type="password" placeholder="Password" id="password" name="password" required>
+                            <span class="eye" onclick="showPassword()">
+                                <i id="hide" class="fa fa-eye"></i>
+                                <i id="show" class="fa fa-eye-slash"></i>
+                            </span>
                         </div>
-                        <div>
-                            <input type="checkbox" onclick="myFunction()"> Show Password
-                        </div>
+
+                        <!--click Sign in-->
                         <input type="submit" value="Sign in" class="btn solid">
-                        <a href="ResetPassword.jsp" style="font-family: sans-serif;">Forgot password</a>
 
                         <p class="social-text">Or Sign in With social platforms</p>
                         <div class="social-media">
@@ -56,6 +67,8 @@
                     </form>
                 </div>
             </div>
+
+            <!--Go to Sign up-->
             <div class="panels-container">
                 <div class="panel left-panel">
                     <div class="content">
@@ -70,7 +83,6 @@
                     <img src="signIn.svg" class="image" alt="">
                 </div>
             </div>
-        </div>  
-        <script type="text/javascript" src="js2.js"></script>
+        </div>    
     </body>
 </html>

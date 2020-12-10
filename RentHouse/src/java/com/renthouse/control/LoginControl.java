@@ -44,9 +44,9 @@ public class LoginControl extends HttpServlet {
             if (user == null) {
                 request.getRequestDispatcher("Signin.jsp").include(request, response);
             } else if (user.getUsertype() == "Student") {
-                request.getRequestDispatcher("StudentrAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("Home.jsp").forward(request, response);
             } else if (user.getUsertype() == "Landlord") {
-                request.getRequestDispatcher("LandlordAccount.jsp").forward(request, response);
+                request.getRequestDispatcher("Home.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("Home.jsp").forward(request, response);
             }
