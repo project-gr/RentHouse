@@ -17,11 +17,28 @@ import java.util.List;
  *
  * @author Ren
  */
-public class StudentDAO implements DAO<Student>{
-    
-    Connection conn = null; 
+public class StudentDAO implements DAO<Student> {
+
+    Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+
+    public boolean addToUser(String username, String ID) {
+        boolean b = false;
+
+        try {
+            String query = "insert into Student values(" + ID + ",'" + username + "');";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            rs = ps.executeQuery();
+
+            b = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
 
     @Override
     public List<Student> getList() throws SQLException {
@@ -36,15 +53,20 @@ public class StudentDAO implements DAO<Student>{
     @Override
     public boolean add(Student student) throws SQLException {
         boolean b = false;
-        
+
         try {
-            String query = "insert into StudentInfo (StudentID, Student_Name, Student_Phone, Student_Email, Student_Status"
-                    + "(" + student.getStudentID()+ ", " + student.getStudentName()+ ", " + student.getStudentPhone()
-                    + ", " + student.getStudentMail() + ", " + student.getStudentStatus()+ ")";
+            String query = "insert into StudentInfo (StudentID, Student_Name, Student_Phone, Student_Email, Student_Status) "
+                    + "values (?, ?, ?, ?, '0');";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
+
+            ps.setString(1, student.getStudentID());
+            ps.setString(2, student.getStudentName());
+            ps.setString(3, student.getStudentPhone());
+            ps.setString(4, student.getStudentMail());
+
             rs = ps.executeQuery();
-            
+
             b = true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,5 +83,5 @@ public class StudentDAO implements DAO<Student>{
     public boolean update(Student item) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

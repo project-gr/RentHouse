@@ -5,8 +5,16 @@
  */
 package com.renthouse.control;
 
+import com.renthouse.bean.Landlord;
+import com.renthouse.bean.Student;
+import com.renthouse.bean.Users;
+import com.renthouse.dao.LandlordDAO;
+import com.renthouse.dao.StudentDAO;
+import com.renthouse.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +37,7 @@ public class InfoControl extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,9 +47,31 @@ public class InfoControl extends HttpServlet {
             String ID = request.getParameter("ID");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
+
+            String username = request.getParameter("username");
             
+            UserDAO userDAO = new UserDAO();
+            Users user = userDAO.selectUser(username);
             
-        }
+            out.print(user.getUsertype());
+            
+            if (user.getUsertype().equals("Landlord")) {
+                LandlordDAO landlordDAO = new LandlordDAO();
+                Landlord landlord = new Landlord(ID, fname, phone, email);
+                landlordDAO.add(landlord);
+                
+                landlordDAO.addToUser(username, ID);
+            } else if (user.getUsertype().equals("Student")) {
+                StudentDAO studentDAO = new StudentDAO();
+                Student student = new Student(ID, fname, phone, email, 0);
+                studentDAO.add(student);
+                
+                studentDAO.addToUser(username, ID);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(InfoControl.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,6 +87,7 @@ public class InfoControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**

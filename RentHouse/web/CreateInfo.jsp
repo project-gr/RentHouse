@@ -15,19 +15,28 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     </head>
     <body>
+
+        <%String username = (String) request.getAttribute("username");%>
+
         <div class="container">
             <div class="forms-container">
                 <div class="infor">
                     <form action="InfoControl" class="infor-form"> <%-- Information Control --%>
                         <h2 class="title">Information</h2>
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Full Name" name="fname" required>
-                        </div>
+
+                        <input type="hidden" value="<%= username%>" name="username">
+                        <%
+                            
+                        %>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="ID" name="ID" required>
                         </div>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Full Name" name="fname" required>
+                        </div>
+
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="email" placeholder="Email" name="email" required>
@@ -37,7 +46,7 @@
                             <input type="text" placeholder="Phone Number" name="phone" required>
                         </div>
                         <br>
-                        <input type="submit" value="Create" class="btn solid">
+                        <input type="submit" value="Save" class="btn solid">
                     </form>
                 </div>
             </div>
@@ -49,7 +58,7 @@
                             If you have an account,
                             please press this button to Sign in!
                         </p>
-                        <button class="btn transparent" onclick="location.href='SignIn.jsp'">Sign in</button>
+                        <button class="btn transparent" onclick="location.href = 'SignIn.jsp'">Sign in</button>
                     </div>
 
                     <img src="infor.svg" class="image" alt="">

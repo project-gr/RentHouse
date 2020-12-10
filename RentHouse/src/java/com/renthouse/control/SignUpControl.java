@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static org.apache.tomcat.jni.User.username;
 
 /**
  *
@@ -41,18 +42,17 @@ public class SignUpControl extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            String fname = request.getParameter("fname");
-            String email = request.getParameter("email");
-            String phone = request.getParameter("phone");
             String type = request.getParameter("type");
 
             UserDAO userDAO = new UserDAO();
             Users check = userDAO.checkLogin(username, password);
+  
 
             if (check == null) {
                 Users user = new Users(username, password, type);
 
                 userDAO.add(user);
+                request.setAttribute("username", username);
                 request.getRequestDispatcher("CreateInfo.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("SignIn.jsp").include(request, response);
@@ -60,6 +60,7 @@ public class SignUpControl extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(SignUpControl.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

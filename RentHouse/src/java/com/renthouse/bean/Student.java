@@ -15,12 +15,12 @@ public class Student {
     private String studentName;
     private String studentPhone;
     private String studentMail;
-    private boolean studentStatus;
+    private int studentStatus;
 
     public Student() {
     }
 
-    public Student(String studentID, String studentName, String studentPhone, String studentMail, boolean studentStatus) {
+    public Student(String studentID, String studentName, String studentPhone, String studentMail, int studentStatus) {
         this.studentID = studentID;
         this.studentName = studentName;
         this.studentPhone = studentPhone;
@@ -60,11 +60,11 @@ public class Student {
         this.studentMail = studentMail;
     }
 
-    public boolean getStudentStatus() {
+    public int getStudentStatus() {
         return studentStatus;
     }
 
-    public void setStudentStatus(boolean studentStatus) {
+    public void setStudentStatus(int studentStatus) {
         this.studentStatus = studentStatus;
     }
     

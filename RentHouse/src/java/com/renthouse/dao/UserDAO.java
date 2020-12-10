@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,7 +37,7 @@ public class UserDAO implements DAO<Users>{
             
             rs = ps.executeQuery();
             
-            while (rs.next()) {                
+            while (rs.next()) {  X              
                 Users user = new Users(rs.getString(1), rs.getString(2), rs.getString(3));
                 return user;
             }
@@ -95,6 +97,27 @@ public class UserDAO implements DAO<Users>{
             e.printStackTrace();
         }
         return userList;
+    }
+    
+    public Users selectUser(String username) throws Exception {
+        Users user = new Users();
+        try {
+            String query = "select * from Users where username =?";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                user.setUsername(rs.getString(1));
+                user.setPassword(rs.getString(2));
+                user.setUsertype(rs.getString(3));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
     }
     
     @Override
