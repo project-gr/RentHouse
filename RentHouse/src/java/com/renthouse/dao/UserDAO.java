@@ -37,7 +37,7 @@ public class UserDAO implements DAO<Users>{
             
             rs = ps.executeQuery();
             
-            while (rs.next()) {  X              
+            while (rs.next()) {
                 Users user = new Users(rs.getString(1), rs.getString(2), rs.getString(3));
                 return user;
             }
@@ -46,6 +46,8 @@ public class UserDAO implements DAO<Users>{
         }
         return null;
     }
+    
+    
     
     @Override
     public boolean add(Users user) throws SQLException {
