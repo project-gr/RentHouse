@@ -1,0 +1,171 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 9, 2020, 9:38:53 PM
+    Author     : ADMIN
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+    height: 400px;
+    background-color: #f4f4f4;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0;
+    transform: scale(0.95);
+    transition: box-shadow 0.5s ease-in-out,
+                transform 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1);
+    box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.imgBox {
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.details {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background-color: #f4f4f4be;
+    padding: 10px 20px;
+    bottom: -30%;
+    transition: 0.5s;
+}
+
+.details:hover {
+    bottom: 0;
+}
+
+.textContent {
+    position: relative;
+    margin-top: 10px;
+    color: #414141;
+}
+
+.details h3 {
+    font-size: 20px;
+    padding: 5px 0;
+}
+
+.details .status {
+    color: #B10000;
+    text-transform: uppercase;
+}
+
+.price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+}
+
+.details h4 {
+    font-size: 18px;
+    margin-top: 15px;
+    padding: 10px 0;
+    font-weight: bold;
+    color: #414141;
+}
+
+.card button {
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+    padding: 5px 0;
+    margin: 10px 0;
+    background-color: #c3c3c3;
+    color: #414141;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #414141;
+    color: #fff;
+}
+
+.description {
+    background-color: #BCABC5;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    line-height: 2rem;
+    top: -70px;
+    right: -70px;
+    border-radius: 0 0 200px 200px;
+    transition: all 0.5s, border-radius 1s, top 1s;
+}
+
+.description hr {
+    border: 1px solid #414141;
+}
+
+.description .icon {
+    position: absolute;
+    top: 85px;
+    right: 85px;
+    color: #fff;
+    opacity: 1;
+}
+
+.description:hover {
+    width: 100%;
+    height: 80%;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+}
+
+.description:hover .icon {
+    opacity: 0;
+}
+
+.description .contents {
+    color: #414141;
+    padding: 5%;
+    transform: scale(0.5);
+    transform: translateY(-200%);
+    transition: opacity 0.2s, transform 0.8s;
+    opacity: 0;
+}
+
+.description:hover .contents {
+    transform: scale(1);
+    opacity: 1;
+    transform: translateY(0);
+}
