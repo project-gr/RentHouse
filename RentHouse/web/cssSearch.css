@@ -60,9 +60,8 @@ dropdown-search-list select {
 }
 
 .dropdown-search select option {
-    font-weight: 300;
+    font-weight: 300px;
 }
-
 .search {
     width: 600px;
     height: 100%;

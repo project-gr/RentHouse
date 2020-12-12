@@ -96,7 +96,7 @@
                                 <div class="dropdown-search">
                                     <div class="dropdown-search-list">
                                         <select name="type">
-                                            <option> Category </option>
+                                            <option hidden="true"> Category </option>
                                             <option value="Street"> Street </option>
                                             <option value="District"> District </option>
                                             <option value="City"> City </option>
