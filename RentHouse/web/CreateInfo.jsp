@@ -4,6 +4,7 @@
     Author     : Ren
 --%>
 
+<%@page import="com.renthouse.dao.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
     </head>
     <body>
 
-        <%String username = (String) request.getAttribute("username");%>
+
 
         <div class="container">
             <div class="forms-container">
@@ -24,14 +25,29 @@
                     <form action="InfoControl" class="infor-form"> <%-- Information Control --%>
                         <h2 class="title">Information</h2>
 
-                        <input type="hidden" value="<%= username%>" name="username">
                         <%
-                            
+                            String username = (String) request.getAttribute("username");
+                            UserDAO userDAO = new UserDAO();
+                            String ID = userDAO.getID(username);
+                            if (ID == null) {
                         %>
+                        <input type="hidden" value="<%= username%>" name="username">
+
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="ID" name="ID" required>
                         </div>
+                        <%
+                            } else {
+                        %>
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <h3 class="title"> Identification Card: <%= ID%> </h3>
+                        </div>
+                        <%
+                            }
+                        %>
+
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="Full Name" name="fname" required>
