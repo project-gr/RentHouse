@@ -13,9 +13,9 @@
         <link rel="stylesheet" type="text/css" href="cssSearch2.css">
     </head>
     <body>
-        <div>
+        <header>
             <%@ include file="Header.jsp" %>
-        </div>
+        </header>
         <%-- Show houses --%>
         <div class="card">
             <div class="imgBox">
@@ -133,6 +133,6 @@
         <div>
             <%@ include file="Footer.jsp" %>
         </div>
-        
+        <%@ include file="Footer.jsp" %>
     </body>
 </html>

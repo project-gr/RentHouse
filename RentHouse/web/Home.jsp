@@ -118,5 +118,7 @@
                 </section>
             </form>
         </main>
+        <footer><%@ include file="Footer.jsp" %></footer>
+        
     </body>
 </html>

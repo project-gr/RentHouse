@@ -25,7 +25,7 @@
                     <div class="nav-links">
                         <ul>
                             <li class="nav-link">
-                                <a href="#">Home</a>
+                                <a href="Home.jsp">Home</a>
                             </li>
                             
                             <li class="nav-link">

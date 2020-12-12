@@ -15,6 +15,9 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     </head>
     <body>
+        <header>
+            <%@ include file="Header.jsp" %>
+        </header>
 
         <%String username = (String) request.getAttribute("username");%>
 
@@ -26,7 +29,7 @@
 
                         <input type="hidden" value="<%= username%>" name="username">
                         <%
-                            
+
                         %>
                         <div class="input-field">
                             <i class="fas fa-user"></i>

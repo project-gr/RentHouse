@@ -33,7 +33,7 @@ a {
 
 header {
     position: fixed;
-    top: 0px;
+    margin-top: 0px;
     background-color: #F1F1F1;
     width: 100%;
     z-index: 1000;

@@ -14,6 +14,9 @@
         <link rel="stylesheet" type="text/css" href="cssContactUs.css">
     </head>
     <body>
+        <header>
+            <%@ include file="Header.jsp" %>
+        </header>
         <section class="contactUs">
             <div class="content">
                 <h2>Contact Us</h2>
@@ -89,5 +92,6 @@
                 </div>
             </div>
         </section>
+        <%@ include file="Footer.jsp" %>
     </body>
 </html>
