@@ -1,0 +1,192 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 8, 2020, 10:18:17 PM
+    Author     : ADMIN
+*/
+
+html {
+    overflow-y: scroll;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px 100px;
+    background-color: #f1f1f1;
+    color: #333333;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+footer .footer-container .sec {
+    margin-right: 30px;
+}
+
+footer .footer-container .sec.aboutus {
+    width: 40%;
+}
+
+footer .footer-container h2 {
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+footer .footer-container h2:before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #333333;
+}
+
+.sci {
+    margin-top: 20px;
+    display: flex;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sci li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border: 2px solid #c3c3c3;
+    background-color: #c3c3c3;
+    border-radius: 5px;
+}
+
+.sci li a:hover {
+    background-color: #414141;
+    border: 2px solid #414141;
+}
+
+.sci li a .fab {
+    color: #414141;
+    font-size: 22px;
+}
+
+.sci li a .fab:hover {
+    color: #fff;
+}
+
+.sec.quickLinks {
+    position: relative;
+    width: 25%;
+}
+
+.sec.quickLinks ul li a {
+    color: #333333;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.sec.quickLinks ul li a:hover {
+    text-decoration: underline;
+}
+
+.contact {
+    width: calc(35% - 60px);
+    margin-right: 0 !important;
+}
+
+.contact .info {
+    position: relative;
+}
+
+.contact .info li {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.contact .info li span:nth-child(1) {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.contact .info li a {
+    color: #333333;
+}
+
+.contact .info li a:hover {
+    text-decoration: underline;
+}
+
+.copyrightText {
+    width: 100%;
+    background-color: #c3c3c3;
+    padding: 8px 100px;
+    text-align: center;
+    color: #333333;
+}
+
+@media (max-width: 991px) {
+    footer {
+        padding: 40px;
+    }
+
+    footer .footer-container {
+        flex-direction: column;
+    }
+
+    footer .footer-container .sec {
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+
+    footer .footer-container .sec.aboutus {
+        width: 100%;
+    }
+    
+    footer .footer-container .sec.quickLinks {
+        width: 100%
+    }
+    
+    footer .footer-container .sec.contact {
+        width: 100%
+    }
+
+    .copyrightText {
+        padding: 8px 40px;
+    }
+}
