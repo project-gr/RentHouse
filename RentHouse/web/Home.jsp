@@ -15,7 +15,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="cssHome.css">
         <link rel="stylesheet" type="text/css" href="cssSearch.css">
-        
+
         <!--Java Script-->
         <!--<script type="text/javascript" src="myFunction.js"></script>--> 
         <script type="text/javascript" src="jsSearch.js"></script>
@@ -91,31 +91,32 @@
             </div>
         </header>
         <main>
-            <section>
-                <div class="overlay">
-                    <div class="search-container">
-                        <h1 class="title">Searching</h1>
-                        <div class="form-group">
-                            <div class="dropdown-search">
-                                <div class="default-option">Category</div>
-                                <div class="dropdown-search-list">
-                                    <ul>
-                                        <li><i class="fas fa-road">&nbsp;</i>Street</li>
-                                        <li><i class="fas fa-archway">&nbsp;</i>District</li>
-                                        <li><i class="fas fa-city">&nbsp;</i>City</li>
-                                    </ul>
+            <form role="search" method="post" action="SearchControl">
+                <section>
+                    <div class="overlay">
+                        <div class="search-container">
+                            <h1 class="title">Searching</h1>
+                            <div class="form-group">                                
+                                <div class="dropdown-search" name="type">
+                                    <div class="default-option">Category</div>
+                                    <div class="dropdown-search-list">
+                                        <ul>
+                                            <li><i class="fas fa-road">&nbsp;</i>Street</li>
+                                            <li><i class="fas fa-archway">&nbsp;</i>District</li>
+                                            <li><i class="fas fa-city">&nbsp;</i>City</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="search">
+                                    <input type="text" name="search" class="search-input" placeholder="Search...">
+                                </div>
 
-                            <div class="search">
-                                <input type="text" class="search-input" placeholder="Search...">
+                                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                             </div>
-
-                            <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </form>
         </main>
     </body>
 </html>
