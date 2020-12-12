@@ -68,7 +68,7 @@
                                 </div>
                             </li>
                             <li class="nav-link">
-                                <a href="#">About us</a>
+                                <a href="ContactUs.jsp">Contact Us</a>
                             </li>
                         </ul>
                     </div>
@@ -93,13 +93,13 @@
                         <h1 class="title">Searching</h1>
                         <div class="form-group">
                             <div class="dropdown-search">
-                                <div class="default-option">Category</div>
                                 <div class="dropdown-search-list">
-                                    <ul>
-                                        <li><i class="fas fa-road">&nbsp;</i>Street</li>
-                                        <li><i class="fas fa-archway">&nbsp;</i>District</li>
-                                        <li><i class="fas fa-city">&nbsp;</i>City</li>
-                                    </ul>
+                                    <select name="type">
+                                        <option> Category </option>
+                                        <option value="Street"> Street </option>
+                                        <option value="District"> District </option>
+                                        <option value="City"> City </option>
+                                    </select>
                                 </div>
                             </div>
 
