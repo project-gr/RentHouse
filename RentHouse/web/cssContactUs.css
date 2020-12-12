@@ -27,7 +27,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: url(contact2.jpg);
+    background: url(Images/contact2.jpg);
     background-size: cover;
     opacity: 2;
 }

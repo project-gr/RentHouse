@@ -18,7 +18,7 @@
         <main>
             <div class="card">
                 <div class="imgBox">
-                    <img src="house1.jpg">
+                    <img src="Images/house1.jpg">
                 </div>
 
                 <div class="details">
@@ -46,7 +46,7 @@
             </div>
             <div class="card">
                 <div class="imgBox">
-                    <img src="house1.jpg">
+                    <img src="Images/house1.jpg">
                 </div>
 
                 <div class="details">
@@ -74,7 +74,7 @@
             </div>
             <div class="card">
                 <div class="imgBox">
-                    <img src="house1.jpg">
+                    <img src="Images/house1.jpg">
                 </div>
 
                 <div class="details">
@@ -102,7 +102,7 @@
             </div>
             <div class="card">
                 <div class="imgBox">
-                    <img src="house1.jpg">
+                    <img src="Images/house1.jpg">
                 </div>
 
                 <div class="details">
