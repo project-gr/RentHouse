@@ -17,19 +17,50 @@ public class House {
     private String street;
     private String district;
     private String city;
-    private boolean houseStatus;
+    private String description;
+    private String coverImage;
+    private float price;
+    private int houseStatus;
 
     public House() {
     }
 
-    public House(String houseID, int houseNo, String address, String street, String district, String city, boolean houseStatus) {
+    public House(String houseID, int houseNo, String address, String street, String district, String city, String description, String coverImage, float price, int houseStatus) {
         this.houseID = houseID;
         this.houseNo = houseNo;
         this.address = address;
         this.street = street;
         this.district = district;
         this.city = city;
+        this.description = description;
+        this.coverImage = coverImage;
+        this.price = price;
         this.houseStatus = houseStatus;
+    }
+
+    
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 
     public String getHouseID() {
@@ -80,12 +111,11 @@ public class House {
         this.city = city;
     }
 
-    public boolean getHouseStatus() {
+    public int getHouseStatus() {
         return houseStatus;
     }
 
-    public void setHouseStatus(boolean houseStatus) {
+    public void setHouseStatus(int houseStatus) {
         this.houseStatus = houseStatus;
     }
-    
 }

@@ -77,7 +77,10 @@ Create table dbo.House (
 	Street varchar (30),
 	District varchar (30),
 	City varchar (30),
-	House_Status bit
+	Descriptions text,
+	CoverImage varchar (100),
+	Price float NOT NULL,
+	House_Status tinyint
 );
 
 CREATE SEQUENCE CountBy1  
