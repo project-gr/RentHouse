@@ -25,31 +25,6 @@ public class HouseDAO implements DAO<Landlord> {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    @Override
-    public List<Landlord> getList() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Landlord> getElement(String name) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean add(Landlord item) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean delete(String id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean update(Landlord item) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public List<House> getHouseByStreet(String name) {
         List<House> houseList = null;
         House house = null;
@@ -73,7 +48,10 @@ public class HouseDAO implements DAO<Landlord> {
                 house.setStreet(rs.getString(4));
                 house.setDistrict(rs.getString(5));
                 house.setCity(rs.getString(6));
-                house.setHouseStatus(rs.getBoolean(7));
+                house.setDescription(rs.getString(7));
+                house.setCoverImage(rs.getString(8));
+                house.setPrice(rs.getFloat(9));
+                house.setHouseStatus(rs.getInt(10));
 
                 houseList.add(house);
             }
@@ -91,7 +69,6 @@ public class HouseDAO implements DAO<Landlord> {
             houseList = new ArrayList<House>();
 
             String query = "select * from House where District = ?";
-            
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
@@ -107,7 +84,10 @@ public class HouseDAO implements DAO<Landlord> {
                 house.setStreet(rs.getString(4));
                 house.setDistrict(rs.getString(5));
                 house.setCity(rs.getString(6));
-                house.setHouseStatus(rs.getBoolean(7));
+                house.setDescription(rs.getString(7));
+                house.setCoverImage(rs.getString(8));
+                house.setPrice(rs.getFloat(9));
+                house.setHouseStatus(rs.getInt(10));
 
                 houseList.add(house);
             }
@@ -140,7 +120,10 @@ public class HouseDAO implements DAO<Landlord> {
                 house.setStreet(rs.getString(4));
                 house.setDistrict(rs.getString(5));
                 house.setCity(rs.getString(6));
-                house.setHouseStatus(rs.getBoolean(7));
+                house.setDescription(rs.getString(7));
+                house.setCoverImage(rs.getString(8));
+                house.setPrice(rs.getFloat(9));
+                house.setHouseStatus(rs.getInt(10));
 
                 houseList.add(house);
             }
@@ -148,5 +131,30 @@ public class HouseDAO implements DAO<Landlord> {
             e.printStackTrace();
         }
         return houseList;
+    }
+
+    @Override
+    public List<Landlord> getList() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Landlord> getElement(String name) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean add(Landlord item) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean delete(String id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean update(Landlord item) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

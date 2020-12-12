@@ -29,18 +29,18 @@
                             </li>
                             
                             <li class="nav-link">
-                                <a href="#">City<i class="fas fa-caret-down"></i></a>
+                                <a href="">City<i class="fas fa-caret-down"></i></a>
                                 <div class="dropdown">
                                     <ul>
                                         <li class="dropdown-link">
-                                            <a href="#">Ha Noi<i class="fas fa-caret-down"></i></a>
+                                            <a href="SearchControl?type=City&search=Ha Noi">Ha Noi<i class="fas fa-caret-down"></i></a>
                                             <div class="dropdown second">
                                                 <ul>
                                                     <li class="dropdown-link">
-                                                        <a href="#">Ba Dinh</a>
+                                                        <a href="SearchControl?type=District&search=Ba Dinh">Ba Dinh</a>
                                                     </li>
                                                     <li class="dropdown-link">
-                                                        <a href="#">Hoan Kiem</a>
+                                                        <a href="SearchControl?type=District&search=Hoan Kiem">Hoan Kiem</a>
                                                     </li>
                                                     <div class="arrow"></div>
                                                 </ul>
@@ -48,14 +48,14 @@
                                         </li>
 
                                         <li class="dropdown-link">
-                                            <a href="#">Ho Chi Minh<i class="fas fa-caret-down"></i></a>
+                                            <a href="SearchControl?type=City&search=TP HCM">Ho Chi Minh<i class="fas fa-caret-down"></i></a>
                                             <div class="dropdown second">
                                                 <ul>
                                                     <li class="dropdown-link">
-                                                        <a href="#">District 1</a>
+                                                        <a href="SearchControl?type=District&search=1">District 1</a>
                                                     </li>
                                                     <li class="dropdown-link">
-                                                        <a href="#">District 2</a>
+                                                        <a href="SearchControl?type=District&search=2">District 2</a>
                                                     </li>
                                                     <div class="arrow"></div>
                                                 </ul>

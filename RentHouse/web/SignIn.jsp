@@ -22,67 +22,69 @@
 
     <%-- Sign in --%>
     <body>
-        <div class="container">
-            <div class="forms-container">
-                <div class="signin-signup">
+        <main>
+            <div class="container">
+                <div class="forms-container">
+                    <div class="signin-signup">
 
-                    <%-- Sign in form --%>
-                    <form action="LoginControl" class="sign-in-form"> <%-- Login Control --%>
-                        <h2 class="title">Sign in</h2>
+                        <%-- Sign in form --%>
+                        <form action="LoginControl" class="sign-in-form"> <%-- Login Control --%>
+                            <h2 class="title">Sign in</h2>
 
-                        <!--Username-->
-                        <div class="input-field">
-                            <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Username" name="username" required>
-                        </div>
+                            <!--Username-->
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input type="text" placeholder="Username" name="username" required>
+                            </div>
 
-                        <!--Password-->
-                        <div class="input-field">
-                            <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" id="password" name="password" required>
-                            <span class="eye" onclick="showPassword()">
-                                <i id="hide" class="fa fa-eye"></i>
-                                <i id="show" class="fa fa-eye-slash"></i>
-                            </span>
-                        </div>
+                            <!--Password-->
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" placeholder="Password" id="password" name="password" required>
+                                <span class="eye" onclick="showPassword()">
+                                    <i id="hide" class="fa fa-eye"></i>
+                                    <i id="show" class="fa fa-eye-slash"></i>
+                                </span>
+                            </div>
 
-                        <!--click Sign in-->
-                        <input type="submit" value="Sign in" class="btn solid">
+                            <!--click Sign in-->
+                            <input type="submit" value="Sign in" class="btn solid">
 
-                        <p class="social-text">Or Sign in With social platforms</p>
-                        <div class="social-media">
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-google"></i>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!--Go to Sign up-->
-            <div class="panels-container">
-                <div class="panel left-panel">
-                    <div class="content">
-                        <h3>New here?</h3>
-                        <p>
-                            If you do not have an account,
-                            please press this button to register an new account!
-                        </p>
-                        <button class="btn transparent" onclick="location.href = 'SignUp.jsp'">Sign up</button>
+                            <p class="social-text">Or Sign in With social platforms</p>
+                            <div class="social-media">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </form>
                     </div>
-
-                    <img src="signIn.svg" class="image" alt="">
                 </div>
-            </div>
-        </div>    
+
+                <!--Go to Sign up-->
+                <div class="panels-container">
+                    <div class="panel left-panel">
+                        <div class="content">
+                            <h3>New here?</h3>
+                            <p>
+                                If you do not have an account,
+                                please press this button to register an new account!
+                            </p>
+                            <button class="btn transparent" onclick="location.href = 'SignUp.jsp'">Sign up</button>
+                        </div>
+
+                        <img src="signIn.svg" class="image" alt="">
+                    </div>
+                </div>
+            </div>  
+        </main>
     </body>
 </html>
