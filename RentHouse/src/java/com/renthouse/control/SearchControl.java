@@ -43,7 +43,7 @@ public class SearchControl extends HttpServlet {
             HouseDAO houseDAO = new HouseDAO();
             List<House> houseList = new ArrayList<House>();
 
-
+            out.print(search);
             if (type.equals("Street")) {
                 houseList = houseDAO.getHouseByStreet(search);
                 request.setAttribute("houseList", houseList);
