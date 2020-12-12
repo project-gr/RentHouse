@@ -58,8 +58,7 @@ public class HouseDAO implements DAO<Landlord> {
             houseList = new ArrayList<House>();
             house = new House();
 
-            String query = "select * from House "
-                    + "where House.Street = ?";
+            String query = "select * from House where Street = ?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

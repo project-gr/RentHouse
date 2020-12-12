@@ -16,7 +16,7 @@
     <body>
         <header>
             <div class="container">
-                <input type="checkbox" name="" id="check">
+                <!--<input type="checkbox" name="" id="check">-->
 
                 <div class="logo-container">
                     <a href="Home.jsp"><h3 class="logo">Eleven<span>Group</span></h3></a>

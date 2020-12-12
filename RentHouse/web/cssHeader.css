@@ -32,7 +32,8 @@ a {
 }
 
 header {
-    position: fixed;
+    position: -o-sticky;
+    top: 0;
     margin-top: 0px;
     background-color: #F1F1F1;
     width: 100%;
