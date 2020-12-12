@@ -58,7 +58,7 @@
                         <!--Type-->
                         <div>
                             <select class="input-field" id="type" name="type" style="width:400px;" >
-                                <option value="Landlord" selected> Landlord</option>
+                                <option value="Landlord"> Landlord</option>
                                 <option value="Student" selected> Student </option>
                             </select>
                         </div>

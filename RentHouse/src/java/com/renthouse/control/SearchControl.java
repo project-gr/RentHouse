@@ -5,12 +5,8 @@
  */
 package com.renthouse.control;
 
-import com.renthouse.bean.House;
-import com.renthouse.dao.HouseDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ADMIN
+ * @author Ren
  */
 @WebServlet(name = "SearchControl", urlPatterns = {"/SearchControl"})
 public class SearchControl extends HttpServlet {
@@ -37,27 +33,16 @@ public class SearchControl extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String search = request.getParameter("search");
-            String type = request.getParameter("type");
-
-            HouseDAO houseDAO = new HouseDAO();
-            List<House> houseList = new ArrayList<House>();
-
-            out.print(search);
-            if (type.equals("Street")) {
-                houseList = houseDAO.getHouseByStreet(search);
-                request.setAttribute("houseList", houseList);
-                out.print("search");
-                request.getRequestDispatcher("Home.jsp").include(request, response);
-            } else if (type.equals("District")){
-                houseList = houseDAO.getHouseByDistrict(search);
-                request.setAttribute("houseList", houseList);
-                request.getRequestDispatcher("Home.jsp").include(request, response);
-            } else if (type.equals("City")){
-                houseList = houseDAO.getHouseByCity(search);
-                request.setAttribute("houseList", houseList);
-                request.getRequestDispatcher("Home.jsp").include(request, response);
-            }
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SearchControl</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet SearchControl at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
