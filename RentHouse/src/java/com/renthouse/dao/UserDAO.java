@@ -29,7 +29,7 @@ public class UserDAO implements DAO<Users> {
     public Users checkLogin(String username, String password) {
         try {
             String query = "select * from Users where Username = ? and Password = ?";
-            conn = new DBcontext().getConnection();
+            conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
             ps.setString(1, username);

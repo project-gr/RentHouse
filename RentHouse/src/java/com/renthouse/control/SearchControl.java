@@ -38,27 +38,26 @@ public class SearchControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String search = request.getParameter("search");
             String type = request.getParameter("type");
+            String search = request.getParameter("search");
 
             HouseDAO houseDAO = new HouseDAO();
             List<House> houseList = new ArrayList<House>();
 
-            out.print(search);
-            if (type.equals("Street")) {
-                houseList = houseDAO.getHouseByStreet(search);
-                request.setAttribute("houseList", houseList);
-                out.print("search");
-                request.getRequestDispatcher("Home.jsp").include(request, response);
-            } else if (type.equals("District")) {
-                houseList = houseDAO.getHouseByDistrict(search);
-                request.setAttribute("houseList", houseList);
-                request.getRequestDispatcher("Home.jsp").include(request, response);
-            } else if (type.equals("City")) {
-                houseList = houseDAO.getHouseByCity(search);
-                request.setAttribute("houseList", houseList);
-                request.getRequestDispatcher("Home.jsp").include(request, response);
-            }
+//            if (type.equals("Street")) {
+//                houseList = houseDAO.getHouseByStreet(search);
+//                request.setAttribute("houseList", houseList);
+//                out.print("search");
+//                request.getRequestDispatcher("Home.jsp").include(request, response);
+//            } else if (type.equals("District")) {
+//                houseList = houseDAO.getHouseByDistrict(search);
+//                request.setAttribute("houseList", houseList);
+//                request.getRequestDispatcher("Home.jsp").include(request, response);
+//            } else if (type.equals("City")) {
+//                houseList = houseDAO.getHouseByCity(search);
+//                request.setAttribute("houseList", houseList);
+//                request.getRequestDispatcher("Home.jsp").include(request, response);
+//            }
         }
     }
 
