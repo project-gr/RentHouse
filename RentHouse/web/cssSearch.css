@@ -4,10 +4,12 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Dec 10, 2020, 12:10:01 PM
-    Author     : Ren
+    Created on : Dec 7, 2020, 7:22:13 PM
+    Author     : ADMIN
 */
-
+html {
+    overflow-y: scroll;
+}
 .search-container {
     position: absolute;
     top: 40%;
