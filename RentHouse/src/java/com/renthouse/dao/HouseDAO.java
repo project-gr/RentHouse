@@ -56,7 +56,6 @@ public class HouseDAO implements DAO<Landlord> {
 
         try {
             houseList = new ArrayList<House>();
-            house = new House();
 
             String query = "select * from House where Street = ?";
             conn = DBcontext.getConnection();
@@ -90,10 +89,9 @@ public class HouseDAO implements DAO<Landlord> {
 
         try {
             houseList = new ArrayList<House>();
-            house = new House();
 
-            String query = "select * from House "
-                    + "where House.District = ?";
+            String query = "select * from House where District = ?";
+            
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
@@ -125,10 +123,8 @@ public class HouseDAO implements DAO<Landlord> {
 
         try {
             houseList = new ArrayList<House>();
-            house = new House();
 
-            String query = "select * from House "
-                    + "where House.City = ?";
+            String query = "select * from House where City = ?";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

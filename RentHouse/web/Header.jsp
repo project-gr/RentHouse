@@ -77,8 +77,8 @@
                     </div>
 
                     <div class="log-sign">
-                        <a href="Signin.jsp" class="btn transparent">Sign In</a>
-                        <a href="Signup.jsp" class="btn solid">Sign Up</a>
+                        <a href="SignIn.jsp" class="btn transparent">Sign In</a>
+                        <a href="SignUp.jsp" class="btn solid">Sign Up</a>
                     </div>
                 </div>
 
