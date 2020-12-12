@@ -4,15 +4,16 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Dec 10, 2020, 12:10:01 PM
-    Author     : Ren
+    Created on : Dec 7, 2020, 7:22:13 PM
+    Author     : ADMIN
 */
-
+html {
+    overflow-y: scroll;
+}
 .search-container {
     position: absolute;
     top: 40%;
     left: 50%;
-    font-weight: 600;
     transform: translate(-50%, -50%);
 }
 
@@ -31,7 +32,6 @@ and open the template in the editor.
     height: 50px;
     padding: 11px;
     border-radius: 30px;
-    font-size: 18px;
 }
 
 .dropdown-search {
@@ -39,56 +39,28 @@ and open the template in the editor.
     width: 150px;
     padding-left: 8px;
     border-right: 2px solid #696969;
-    cursor: pointer;
 }
 
-.default-option {
-    padding: 3px 20px;
+.dropdown-search select {
+    margin-left: 16px;
+    font-size: 20px;
+    border: none;
 }
 
-.dropdown-search-list ul {
-    background-color: #fff;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 150px;
-    border-radius: 5px;
+dropdown-search-list select {
     display: none;
 }
 
-.dropdown-search-list ul li {
-    padding: 10px 10px 10px 20px;
+.dropdown-search select:focus {
+    outline: none;
 }
 
-.dropdown-search-list ul li i {
-    margin-right: 6px;
+.dropdown-search select, option {
+    width: 106px;
 }
 
-.dropdown-search:before {
-    content: '';
-    border-width: 6px 6px 0 6px;
-    border-style: solid;
-    border-color: #333333 transparent;
-    position: absolute;
-    right: 16px;
-    top: 45%;
-}
-
-.dropdown-search-list ul li:before {
-    content: '';
-    border-width: 8px 8px 8px 8px;
-    border-style: solid;
-    border-color: #fff transparent;
-    position: absolute;
-    bottom: 100%;
-    right: 20px;
-}
-
-.dropdown-search-list ul li:hover {
-    background-color: #414141;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 5px; 
+.dropdown-search select option {
+    font-weight: 300;
 }
 
 .search {
@@ -122,8 +94,4 @@ and open the template in the editor.
 
 input, button:focus {
     outline: none;
-}
-
-.dropdown-search-list ul.active {
-    display: block;
 }

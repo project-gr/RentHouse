@@ -1,7 +1,7 @@
 <%-- 
     Document   : Home
-    Created on : Nov 30, 2020, 5:39:24 PM
-    Author     : Ren
+    Created on : Nov 29, 2020, 10:33:49 PM
+    Author     : ADMIN
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,10 +15,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="cssHome.css">
         <link rel="stylesheet" type="text/css" href="cssSearch.css">
-
-        <!--Java Script-->
-        <!--<script type="text/javascript" src="myFunction.js"></script>--> 
-        <script type="text/javascript" src="jsSearch.js"></script>
     </head>
     <body>
         <header>
@@ -35,7 +31,7 @@
                                 <a href="#">Home</a>
                             </li>
                             <li class="nav-link">
-                                <a href="">City<i class="fas fa-caret-down"></i></a>
+                                <a href="#">City<i class="fas fa-caret-down"></i></a>
                                 <div class="dropdown">
                                     <ul>
                                         <li class="dropdown-link">
@@ -72,14 +68,14 @@
                                 </div>
                             </li>
                             <li class="nav-link">
-                                <a href="https://github.com/project-gr/RentHouse">About us</a>
+                                <a href="ContactUs.jsp">Contact Us</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="log-sign">
-                        <a href="SignIn.jsp" class="btn transparent">Sign In</a>
-                        <a href="SignUp.jsp" class="btn solid">Sign Up</a>
+                        <a href="Signin.jsp" class="btn transparent">Sign In</a>
+                        <a href="Signup.jsp" class="btn solid">Sign Up</a>
                     </div>
                 </div>
 
@@ -96,17 +92,18 @@
                     <div class="overlay">
                         <div class="search-container">
                             <h1 class="title">Searching</h1>
-                            <div class="form-group">                                
-                                <div class="dropdown-search" name="type">
-                                    <div class="default-option">Category</div>
+                            <div class="form-group">
+                                <div class="dropdown-search">
                                     <div class="dropdown-search-list">
-                                        <ul>
-                                            <li><i class="fas fa-road">&nbsp;</i>Street</li>
-                                            <li><i class="fas fa-archway">&nbsp;</i>District</li>
-                                            <li><i class="fas fa-city">&nbsp;</i>City</li>
-                                        </ul>
+                                        <select name="type">
+                                            <option> Category </option>
+                                            <option value="Street"> Street </option>
+                                            <option value="District"> District </option>
+                                            <option value="City"> City </option>
+                                        </select>
                                     </div>
                                 </div>
+
                                 <div class="search">
                                     <input type="text" name="search" class="search-input" placeholder="Search...">
                                 </div>
@@ -118,7 +115,6 @@
                 </section>
             </form>
         </main>
-        <footer><%@ include file="Footer.jsp" %></footer>
-        
+        <script src="jsSearch.js"></script>
     </body>
 </html>
