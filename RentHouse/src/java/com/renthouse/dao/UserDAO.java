@@ -47,9 +47,51 @@ public class UserDAO implements DAO<Users> {
         return null;
     }
 
-    public String getID(String username) {
+    public String getStudentID(String username) {
         try {
             String query = "select StudentID from Student where Username = ?";
+            
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            
+            ps.setString(1, username);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String ID = rs.getString(1);
+                return ID;
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public String getLandlordID(String username) {
+        try {
+            String query = "select LandlordID from Landlord where Username = ?";
+            
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            
+            ps.setString(1, username);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String ID = rs.getString(1);
+                return ID;
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public String getStaffID(String username) {
+        try {
+            String query = "select StaffID from Staff where Username = ?";
             
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);

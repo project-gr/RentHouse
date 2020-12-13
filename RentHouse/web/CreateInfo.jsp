@@ -31,21 +31,38 @@
                             if (user == null) {
                                 response.sendRedirect("SignIn.jsp");
                             }
-                            
-                            UserDAO userDAO = new UserDAO();
-                            String username = user.getUsername();
-                            String ID = userDAO.getID(username);
-                            out.print(ID);
-                        %>
-                        
-                        <input type="text" name="username" value="<%=user.getUsername()%>">
-                        <input type="text" name="type" value="<%=user.getUsertype()%>">
 
+                            UserDAO userDAO = new UserDAO();
+
+                            String ID = null;
+                            if (user.getUsertype().equals("Student")) {
+                                ID = userDAO.getStudentID(user.getUsername());
+                            } else if (user.getUsertype().equals("Landlord")) {
+                                ID = userDAO.getLandlordID(user.getUsername());
+                            } else {
+                                ID = userDAO.getStaffID(user.getUsername());
+                            }
+
+                            if (ID == null) {
+                        %>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="ID" name="ID" required>
                         </div>
+                        <%
+                            } else {
+                        %>
+                        <!--<div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="ID: <%=ID%>" name="ID" value="<%=ID%>">
+                        </div>-->
+                        <%
+                            }
+                        %>
 
+                        <input type="hidden" name="username" value="<%=user.getUsername()%>">
+                        <input type="hidden" name="type" value="<%=user.getUsertype()%>">
+                        
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="Full Name" name="fname" required>
