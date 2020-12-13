@@ -46,7 +46,7 @@
                                     <i id="show" class="fa fa-eye-slash"></i>
                                 </span>
                             </div>
-
+                            <a href="forgotPass.jsp">Forgot password</a>
                             <!--click Sign in-->
                             <input type="submit" value="Sign in" class="btn solid">
 
