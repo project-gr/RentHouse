@@ -33,7 +33,9 @@
                             }
                             
                             UserDAO userDAO = new UserDAO();
-                            out.print(userDAO.getID(user.getUsername()));
+                            String username = user.getUsername();
+                            String ID = userDAO.getID(username);
+                            out.print(ID);
                         %>
                         
                         <input type="text" name="username" value="<%=user.getUsername()%>">

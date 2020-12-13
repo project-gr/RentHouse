@@ -77,7 +77,7 @@ Create table dbo.House (
 	Street varchar (30),
 	District varchar (30),
 	City varchar (30),
-	Descriptions text,
+	Descriptions varchar (100),
 	CoverImage varchar (100),
 	Price float NOT NULL,
 	House_Status tinyint
@@ -99,6 +99,9 @@ DECLARE @HouseID VARCHAR(30),
 	@Street varchar (30),
 	@District varchar (30),
 	@City varchar (30),
+	@Descriptions varchar (100),
+	@CoverImage varchar (100),
+	@Price float,
 	@House_Status bit
 SELECT @NextID = NEXT VALUE FOR CountBy1,
 	@HouseID = 'House_',
@@ -107,6 +110,9 @@ SELECT @NextID = NEXT VALUE FOR CountBy1,
 	@Street = Street,
 	@District = District,
 	@City = City,
+	@Descriptions = Descriptions,
+	@CoverImage = CoverImage,
+	@Price = Price,
 	@House_Status = House_Status
 FROM INSERTED
 INSERT INTO House VALUES (
@@ -116,6 +122,9 @@ INSERT INTO House VALUES (
 	@Street,
 	@District,
 	@City,
+	@Descriptions,
+	@CoverImage,
+	@Price,
 	@House_Status
 );
 
