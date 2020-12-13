@@ -27,7 +27,7 @@ public class StudentDAO implements DAO<Student> {
         boolean b = false;
 
         try {
-            String query = "insert into Student values(" + ID + ",'" + username + "');";
+            String query = "insert into Student values('" + ID + "','" + username + "');";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

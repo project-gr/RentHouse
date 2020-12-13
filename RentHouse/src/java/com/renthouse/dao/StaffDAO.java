@@ -27,7 +27,7 @@ public class StaffDAO implements DAO<Staff>{
         boolean b = false;
 
         try {
-            String query = "insert into Staff values(" + ID + ",'" + username + "');";
+            String query = "insert into Staff values('" + ID + "','" + username + "');";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

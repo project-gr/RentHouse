@@ -51,27 +51,25 @@ public class InfoControl extends HttpServlet {
             String phone = request.getParameter("phone");
 
             String username = request.getParameter("username");
+            String type = request.getParameter("type");
             
-            UserDAO userDAO = new UserDAO();
-            Users user = userDAO.selectUser(username);
+            out.print(type);
             
-            out.print(user.getUsertype());
-            
-            if (user.getUsertype().equals("Landlord")) {
+            if (type.equals("Landlord")) {
                 LandlordDAO landlordDAO = new LandlordDAO();
                 Landlord landlord = new Landlord(ID, fname, phone, email);
                 landlordDAO.add(landlord);
                 
                 landlordDAO.addToUser(username, ID);
                 request.getRequestDispatcher("Home.jsp").forward(request, response);
-            } else if (user.getUsertype().equals("Student")) {
+            } else if (type.equals("Student")) {
                 StudentDAO studentDAO = new StudentDAO();
                 Student student = new Student(ID, fname, phone, email, 0);
                 studentDAO.add(student);
                 
                 studentDAO.addToUser(username, ID);
                 request.getRequestDispatcher("Home.jsp").forward(request, response);
-            } else if (user.getUsertype().equals("Staff")) {
+            } else if (type.equals("Staff")) {
                 StaffDAO staffDAO = new StaffDAO();
                 Staff staff = new Staff(ID, fname, phone, email);
                 staffDAO.add(staff);

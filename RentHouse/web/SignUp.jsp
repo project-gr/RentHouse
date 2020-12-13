@@ -26,7 +26,7 @@
                 <div class="signin-signup">
 
                     <!--Form-->
-                    <form action="SignUpControl" class="sign-up-form"> <%-- Sign up control --%>
+                    <form action="SignUpControl" class="sign-up-form" method="post"> <%-- Sign up control --%>
                         <h2 class="title" > Create new account </h2>
 
                         <!--Username-->

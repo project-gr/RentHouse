@@ -4,6 +4,8 @@
     Author     : Ren
 --%>
 
+<%@page import="com.renthouse.bean.Student"%>
+<%@page import="com.renthouse.bean.Users"%>
 <%@page import="com.renthouse.dao.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,8 +25,19 @@
                     <form action="InfoControl" class="infor-form" method="post"> <%-- Information Control --%>
                         <h2 class="title">Your Profile</h2>
 
-                        <%String username = (String) request.getAttribute("username");%>
-                        <input type="hidden" value="<%= username%>" name="username">
+                        <%
+                            Users user = (Users) session.getAttribute("user");
+
+                            if (user == null) {
+                                response.sendRedirect("SignIn.jsp");
+                            }
+                            
+                            UserDAO userDAO = new UserDAO();
+                            out.print(userDAO.getID(user.getUsername()));
+                        %>
+                        
+                        <input type="text" name="username" value="<%=user.getUsername()%>">
+                        <input type="text" name="type" value="<%=user.getUsertype()%>">
 
                         <div class="input-field">
                             <i class="fas fa-user"></i>

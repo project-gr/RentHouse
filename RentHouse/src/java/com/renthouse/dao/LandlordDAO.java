@@ -37,7 +37,7 @@ public class LandlordDAO implements DAO<Landlord>{
         boolean b = false;
 
         try {
-            String query = "insert into Landlord values(" + ID + ",'" + username + "');";
+            String query = "insert into Landlord values('" + ID + "','" + username + "');";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

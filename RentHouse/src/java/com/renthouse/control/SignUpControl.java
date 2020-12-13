@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import static org.apache.tomcat.jni.User.username;
 
 /**
@@ -52,8 +53,11 @@ public class SignUpControl extends HttpServlet {
                 Users user = new Users(username, password, type);
 
                 userDAO.add(user);
-                request.setAttribute("username", username);
-                request.getRequestDispatcher("CreateInfo.jsp").forward(request, response);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                
+                response.sendRedirect("CreateInfo.jsp");
+//                request.getRequestDispatcher("CreateInfo.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("SignIn.jsp").include(request, response);
             }

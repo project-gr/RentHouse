@@ -49,12 +49,12 @@ public class UserDAO implements DAO<Users> {
 
     public String getID(String username) {
         try {
-            String query = "select * from StudentInfo"
+            String query = "select StudentInfo.StudentID from StudentInfo"
                     + "inner join dbo.Student as S"
                     + "on StudentInfo.StudentID = S.StudentID"
-                    + "where S.Username = ?;";
+                    + "where S.Username = ?";
             
-            conn = new DBcontext().getConnection();
+            conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             
             ps.setString(1, username);
