@@ -20,7 +20,7 @@
         <div class="container">
             <div class="forms-container">
                 <div class="infor">
-                    <form action="InfoControl" class="infor-form"> <%-- Information Control --%>
+                    <form action="InfoControl" class="infor-form" method="post"> <%-- Information Control --%>
                         <h2 class="title">Your Profile</h2>
 
                         <%String username = (String) request.getAttribute("username");%>

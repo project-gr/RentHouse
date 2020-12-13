@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.renthouse.bean.Users"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
                             <li class="nav-link">
                                 <a href="Home.jsp">Home</a>
                             </li>
-                            
+
                             <li class="nav-link">
                                 <a href="">City<i class="fas fa-caret-down"></i></a>
                                 <div class="dropdown">
@@ -65,21 +66,36 @@
                                     </ul>
                                 </div>
                             </li>
-                            
+
                             <li class="nav-link">
                                 <a href="Home.jsp">Search</a>
                             </li>
-                            
+
                             <li class="nav-link">
                                 <a href="ContactUs.jsp">Contact us</a>
                             </li>
                         </ul>
                     </div>
 
+                    <%
+                        Users user = (Users) session.getAttribute("user");
+
+                        if (user == null) {
+                    %>
                     <div class="log-sign">
                         <a href="SignIn.jsp" class="btn transparent">Sign In</a>
                         <a href="SignUp.jsp" class="btn solid">Sign Up</a>
                     </div>
+                    <%
+                    } else {
+                    %>
+                    <div class="log-sign">
+                        <a href="CreateInfo.jsp" class="btn transparent">Profile</a>
+                        <a href="SignOut.jsp" class="btn solid">Sign Out</a>
+                    </div>
+                    <%
+                        }
+                    %>
                 </div>
 
                 <div class="hamburger-menu-container">

@@ -28,7 +28,7 @@
                     <div class="signin-signup">
 
                         <%-- Sign in form --%>
-                        <form action="LoginControl" class="sign-in-form"> <%-- Login Control --%>
+                        <form action="LoginControl" class="sign-in-form" method="post"> <%-- Login Control --%>
                             <h2 class="title">Sign in</h2>
 
                             <!--Username-->

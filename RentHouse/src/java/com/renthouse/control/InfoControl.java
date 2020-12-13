@@ -6,9 +6,11 @@
 package com.renthouse.control;
 
 import com.renthouse.bean.Landlord;
+import com.renthouse.bean.Staff;
 import com.renthouse.bean.Student;
 import com.renthouse.bean.Users;
 import com.renthouse.dao.LandlordDAO;
+import com.renthouse.dao.StaffDAO;
 import com.renthouse.dao.StudentDAO;
 import com.renthouse.dao.UserDAO;
 import java.io.IOException;
@@ -61,12 +63,21 @@ public class InfoControl extends HttpServlet {
                 landlordDAO.add(landlord);
                 
                 landlordDAO.addToUser(username, ID);
+                request.getRequestDispatcher("Home.jsp").forward(request, response);
             } else if (user.getUsertype().equals("Student")) {
                 StudentDAO studentDAO = new StudentDAO();
                 Student student = new Student(ID, fname, phone, email, 0);
                 studentDAO.add(student);
                 
                 studentDAO.addToUser(username, ID);
+                request.getRequestDispatcher("Home.jsp").forward(request, response);
+            } else if (user.getUsertype().equals("Staff")) {
+                StaffDAO staffDAO = new StaffDAO();
+                Staff staff = new Staff(ID, fname, phone, email);
+                staffDAO.add(staff);
+                
+                staffDAO.addToUser(username, ID);
+                request.getRequestDispatcher("Home.jsp").forward(request, response);
             }
 
         } catch (Exception ex) {
