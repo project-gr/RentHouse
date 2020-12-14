@@ -69,7 +69,7 @@ public class UploadHouse extends HttpServlet {
 //            house1 = new House(ID, houseno, address, street, district, city, description, savePath, price, House_Status);
 //            
 //            house = houseDAO.add(house1);
-            response.sendRedirect("Home.jsp");
+            request.getRequestDispatcher("Home.jsp").include(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(UploadHouse.class.getName()).log(Level.SEVERE, null, ex);
         }

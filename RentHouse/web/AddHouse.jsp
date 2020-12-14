@@ -52,7 +52,7 @@
                             <div class="house-data">
                                 <div class="data">
                                     <h4>No.O.Houses</h4>
-                                    <input type="text" name="HouseNo" required="required">
+                                    <input type="text" name="HouseNo">
                                 </div>
                                 <div class="data">
                                     <h4>Description</h4>

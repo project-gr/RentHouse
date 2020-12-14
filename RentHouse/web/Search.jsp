@@ -33,7 +33,7 @@
 
                 <div class="details">
                     <div class="textContent">
-                        <h3><%= house.getHouseID()%></h3> <%-- ID of houses --%>
+                        <h3><%--<%= house.getHouseID()%>--%> Price: </h3> <%-- ID of houses --%>
                         <div class="price"> $ <%= house.getPrice()%> </div> <%-- Price of houses --%>
                     </div>
                     <h4>Status</h4>
