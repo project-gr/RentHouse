@@ -52,7 +52,11 @@
                             <div class="house-data">
                                 <div class="data">
                                     <h4>No.O.Houses</h4>
+<<<<<<< HEAD
                                     <input type="text" name="houseno" required="required">
+=======
+                                    <input type="text" name="HouseNo">
+>>>>>>> 48ea539ff2cfe2e2efeecd4bc4e5b22fec4ed507
                                 </div>
                                 <div class="data">
                                     <h4>Description</h4>

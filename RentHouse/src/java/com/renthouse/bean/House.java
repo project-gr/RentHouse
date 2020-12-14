@@ -24,6 +24,17 @@ public class House {
 
     public House() {
     }
+    
+    public House(int houseNo, String address, String street, String district, String city, String description, String coverImage, float price) {
+        this.houseNo = houseNo;
+        this.address = address;
+        this.street = street;
+        this.district = district;
+        this.city = city;
+        this.description = description;
+        this.coverImage = coverImage;
+        this.price = price;
+    }
 
     public House(String houseID, int houseNo, String address, String street, String district, String city, String description, String coverImage, float price, int houseStatus) {
         this.houseID = houseID;

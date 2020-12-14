@@ -19,11 +19,35 @@ import java.util.List;
  *
  * @author Ren
  */
-public class HouseDAO implements DAO<Landlord> {
+public class HouseDAO implements DAO<House> {
 
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+
+    @Override
+    public boolean add(House house) throws SQLException {
+        boolean b = false;
+
+        try {
+            String query = "insert into House (House_No, Address, Street, "
+                    + "District, City, Descriptions, CoverImage, Price)"
+                    + "values ('" + house.getHouseNo() + "', '"
+                    + house.getAddress() + "', '" + house.getStreet() +"', "
+                    + "'" + house.getDistrict() + "', '" + house.getCity() + "', "
+                    + "'" + house.getDescription() + "', '" + house.getCoverImage()
+                    + "', '" + house.getPrice() + "');";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            
+            rs = ps.executeQuery();
+
+            b = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
 
     public List<House> getHouseByStreet(String name) {
         List<House> houseList = null;
@@ -132,6 +156,7 @@ public class HouseDAO implements DAO<Landlord> {
         }
         return houseList;
     }
+<<<<<<< HEAD
     
     public House add(House house) {
         try {
@@ -151,17 +176,18 @@ public class HouseDAO implements DAO<Landlord> {
     public List<Landlord> getList() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+=======
+>>>>>>> 48ea539ff2cfe2e2efeecd4bc4e5b22fec4ed507
 
     @Override
-    public List<Landlord> getElement(String name) throws SQLException {
+    public List<House> getList() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean add(Landlord item) throws SQLException {
+    public List<House> getElement(String name) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 
     @Override
     public boolean delete(String id) throws SQLException {
@@ -169,7 +195,7 @@ public class HouseDAO implements DAO<Landlord> {
     }
 
     @Override
-    public boolean update(Landlord item) throws SQLException {
+    public boolean update(House item) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
