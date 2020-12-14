@@ -198,7 +198,7 @@
                     } else {
                     %>
                     <div class="log-sign">
-                        <a href="CreateInfo.jsp" class="btn transparent">Profile</a>
+                        <a href="Profile.jsp" class="btn transparent">Profile</a>
                         <a href="SignOut.jsp" class="btn solid">Sign Out</a>
                     </div>
                     <%

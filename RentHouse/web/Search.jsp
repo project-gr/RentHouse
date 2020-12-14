@@ -48,7 +48,7 @@
                     <%
                         }
                     %>
-                    <button>Order It Now</button>
+                    <button onclick="location.href = 'ContactLandlord.jsp'">Order It Now</button>
                 </div>
 
                 <div class="description">

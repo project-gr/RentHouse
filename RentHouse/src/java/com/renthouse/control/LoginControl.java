@@ -47,19 +47,19 @@ public class LoginControl extends HttpServlet {
             } else if (user.getUsertype() == "Student") {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("Home.jsp");
+                response.sendRedirect("ProfileStudent.jsp");
 //                request.getRequestDispatcher("Home.jsp").forward(request, response);
                 
             } else if (user.getUsertype() == "Landlord") {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("Home.jsp");
+                response.sendRedirect("Profile.jsp");
 //                request.getRequestDispatcher("Home.jsp").forward(request, response);
                 
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("Home.jsp");
+                response.sendRedirect("Profile.jsp");
 //                request.getRequestDispatcher("Home.jsp").forward(request, response);
             }
         }

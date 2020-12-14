@@ -24,6 +24,35 @@ public class HouseDAO implements DAO<House> {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    
+    public String getHouseID(House house) {
+        String ID = null;
+        try {
+            String query = "select HouseID from House where HouseNo = ?, Address = ?"
+                    + "Street = ?, District = ?, City = ?, Description = ?, "
+                    + "CoverImage = ?, Price = ?, House_Status = ?";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setInt(1, house.getHouseNo());
+            ps.setString(2, house.getAddress());
+            ps.setString(3, house.getStreet());
+            ps.setString(4, house.getDistrict());
+            ps.setString(5, house.getCity());
+            ps.setString(6, house.getDescription());
+            ps.setString(7, house.getCoverImage());
+            ps.setFloat(8, house.getPrice());
+            ps.setInt(9, house.getHouseStatus());
+
+            rs = ps.executeQuery();
+            
+            while (rs.next()){
+                ID = rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return ID;
+    }
 
     @Override
     public boolean add(House house) throws SQLException {

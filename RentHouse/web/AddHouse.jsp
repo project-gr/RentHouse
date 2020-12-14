@@ -4,6 +4,8 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.renthouse.dao.UserDAO"%>
+<%@page import="com.renthouse.bean.Landlord"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,6 +22,20 @@
                 <%@ include file="Header.jsp" %>
             </header>
             <center>
+                <%            user = (Users) session.getAttribute("user");
+
+                    if (user == null) {
+                        response.sendRedirect("SignIn.jsp");
+                    }
+
+                    UserDAO userDAO = new UserDAO();
+
+                    String ID = userDAO.getLandlordID(user.getUsername());
+                    Landlord landlord = userDAO.getLandlord(user.getUsername());
+                %>
+                
+                <input type="hidden" name="ID" value="<%=landlord.getLandlordID()%>">
+                
                 <div class="wrapper-profile">
                     <div class="left">
                         <div class="info-data">

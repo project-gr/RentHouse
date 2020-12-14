@@ -7,6 +7,7 @@ package com.renthouse.control;
 
 import com.renthouse.bean.House;
 import com.renthouse.dao.HouseDAO;
+import com.renthouse.dao.LandlordDAO;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -64,11 +65,16 @@ public class UploadHouse extends HttpServlet {
             price = Float.parseFloat(request.getParameter("Price"));
             houseno = Integer.parseInt(request.getParameter("houseno"));
             
+            String ID = request.getParameter("ID");
+            
             HouseDAO houseDAO = new HouseDAO();
             House house, house1;
             house = new House();
-            house1 = new House(houseno, address, street, district, city, description, savePath, 0);
+            house1 = new House(houseno, address, street, district, city, description, savePath, price);
             house = houseDAO.addHouse(house1);
+            
+            LandlordDAO landlordDAO = new LandlordDAO();
+            landlordDAO.addToHouse(ID, houseDAO.getHouseID(house));
             response.sendRedirect("Home.jsp");
         }
 
