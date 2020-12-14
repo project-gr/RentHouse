@@ -27,26 +27,7 @@ public class HouseDAO implements DAO<House> {
 
     @Override
     public boolean add(House house) throws SQLException {
-        boolean b = false;
-
-        try {
-            String query = "insert into House (House_No, Address, Street, "
-                    + "District, City, Descriptions, CoverImage, Price)"
-                    + "values ('" + house.getHouseNo() + "', '"
-                    + house.getAddress() + "', '" + house.getStreet() +"', "
-                    + "'" + house.getDistrict() + "', '" + house.getCity() + "', "
-                    + "'" + house.getDescription() + "', '" + house.getCoverImage()
-                    + "', '" + house.getPrice() + "');";
-            conn = DBcontext.getConnection();
-            ps = conn.prepareStatement(query);
-            
-            rs = ps.executeQuery();
-
-            b = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return b;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public List<House> getHouseByStreet(String name) {
@@ -156,12 +137,11 @@ public class HouseDAO implements DAO<House> {
         }
         return houseList;
     }
-<<<<<<< HEAD
-    
-    public House add(House house) {
+    public House addHouse(House house) {
         try {
-            String query = "insert into House xvalues(0," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
-                    + house.getDistrict() + "', '" + house.getCity() + "' ,'" + house.getDescription() + "', '" + house.getCoverImage() + "', " + house.getPrice() + ", 0);";
+            String query = "insert into House values('0'," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
+                    + house.getDistrict() + "', '" + house.getCity() + "' ,'" + house.getDescription() + "', '" 
+                    + house.getCoverImage() + "', " + house.getPrice() + ", 0);";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
@@ -172,12 +152,6 @@ public class HouseDAO implements DAO<House> {
         return house;
     }
 
-    @Override
-    public List<Landlord> getList() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-=======
->>>>>>> 48ea539ff2cfe2e2efeecd4bc4e5b22fec4ed507
 
     @Override
     public List<House> getList() throws SQLException {

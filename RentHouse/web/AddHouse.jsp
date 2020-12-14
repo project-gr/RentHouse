@@ -24,7 +24,7 @@
                     <div class="left">
                         <div class="info-data">
                             <div class="data" style="padding-top: 17%;">
-                                <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage"/>
+                                <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage" required/>
                             </div>
                             <div class="data" style="padding-top: 65%;">
                                 <h4>Price</h4>
@@ -52,15 +52,7 @@
                             <div class="house-data">
                                 <div class="data">
                                     <h4>No.O.Houses</h4>
-<<<<<<< HEAD
-<<<<<<< HEAD
                                     <input type="text" name="houseno" required="required">
-=======
-                                    <input type="text" name="HouseNo">
->>>>>>> 48ea539ff2cfe2e2efeecd4bc4e5b22fec4ed507
-=======
-                                    <input type="text" name="HouseNo" required="required">
->>>>>>> parent of d30e463... hahahaha
                                 </div>
                                 <div class="data">
                                     <h4>Description</h4>
