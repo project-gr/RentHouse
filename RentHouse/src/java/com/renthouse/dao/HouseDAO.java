@@ -135,7 +135,7 @@ public class HouseDAO implements DAO<Landlord> {
     
     public House add(House house) {
         try {
-            String query = "insert into House xvalues(0," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
+            String query = "insert into House values(0," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
                     + house.getDistrict() + "', '" + house.getCity() + "' ,'" + house.getDescription() + "', '" + house.getCoverImage() + "', " + house.getPrice() + ", 0);";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
