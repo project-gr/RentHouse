@@ -62,8 +62,8 @@
                         <li>
                             <span><i class="far fa-envelope"></i></span>
                             <p>
-                                <a href="mailto:abc@gmail.com">abc@gmail.com</a><br>
-                                <a href="mailto:abc@gmail.com">abc@gmail.com</a>
+                                <a href="mailto:abc@gmail.com">elevengroupp@gmail.com</a><br>
+                                <a href="mailto:abc@gmail.com">nohobao@gmail.com</a>
                             </p>
                         </li>
                     </ul>
