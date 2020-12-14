@@ -132,6 +132,20 @@ public class HouseDAO implements DAO<Landlord> {
         }
         return houseList;
     }
+    
+    public House add(House house) {
+        try {
+            String query = "insert into House xvalues(0," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
+                    + house.getDistrict() + "', '" + house.getCity() + "' ,'" + house.getDescription() + "', '" + house.getCoverImage() + "', " + house.getPrice() + ", 0);";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return house;
+    }
 
     @Override
     public List<Landlord> getList() throws SQLException {
@@ -147,6 +161,7 @@ public class HouseDAO implements DAO<Landlord> {
     public boolean add(Landlord item) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
     @Override
     public boolean delete(String id) throws SQLException {
