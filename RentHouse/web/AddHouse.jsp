@@ -24,11 +24,11 @@
                     <div class="left">
                         <div class="info-data">
                             <div class="data" style="padding-top: 17%;">
-                                <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage" required/>
+                                <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage"/>
                             </div>
                             <div class="data" style="padding-top: 65%;">
                                 <h4>Price</h4>
-                                <input type="text" name="price" required="required">
+                                <input type="text" name="Price" required="required">
                             </div>
                         </div>
                     </div>
@@ -37,12 +37,12 @@
                             <h3>Address</h3>
                             <div class="info-data">
                                 <div class="data">
-                                    <input type="text" name="address" placeholder="Apartment Number" required="required">
-                                    <input type="text" name="street" placeholder="Street" required="required">
+                                    <input type="text" name="Address" placeholder="Apartment Number" required="required">
+                                    <input type="text" name="Street" placeholder="Street" required="required">
                                 </div>
                                 <div class="data">
-                                    <input type="text" name="district" placeholder="District" required="required">
-                                    <input type="text" name="city" placeholder="City" required="required">
+                                    <input type="text" name="District" placeholder="District" required="required">
+                                    <input type="text" name="City" placeholder="City" required="required">
                                 </div>
                             </div>
                         </div>
@@ -53,14 +53,18 @@
                                 <div class="data">
                                     <h4>No.O.Houses</h4>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <input type="text" name="houseno" required="required">
 =======
                                     <input type="text" name="HouseNo">
 >>>>>>> 48ea539ff2cfe2e2efeecd4bc4e5b22fec4ed507
+=======
+                                    <input type="text" name="HouseNo" required="required">
+>>>>>>> parent of d30e463... hahahaha
                                 </div>
                                 <div class="data">
                                     <h4>Description</h4>
-                                    <textarea name="description" required="required"></textarea>
+                                    <textarea name="Description" required="required"></textarea>
                                 </div>
                             </div>
                         </div>
