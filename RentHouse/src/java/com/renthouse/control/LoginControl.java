@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,18 +38,29 @@ public class LoginControl extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            
+
             UserDAO userDAO = new UserDAO();
             Users user = userDAO.checkLogin(username, password);
-            
+
             if (user == null) {
                 request.getRequestDispatcher("SignIn.jsp").include(request, response);
             } else if (user.getUsertype() == "Student") {
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                response.sendRedirect("Home.jsp");
+//                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                
             } else if (user.getUsertype() == "Landlord") {
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                response.sendRedirect("Home.jsp");
+//                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                
             } else {
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                response.sendRedirect("Home.jsp");
+//                request.getRequestDispatcher("Home.jsp").forward(request, response);
             }
         }
     }

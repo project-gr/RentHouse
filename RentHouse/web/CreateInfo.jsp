@@ -4,6 +4,8 @@
     Author     : Ren
 --%>
 
+<%@page import="com.renthouse.bean.Student"%>
+<%@page import="com.renthouse.bean.Users"%>
 <%@page import="com.renthouse.dao.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,17 +22,47 @@
         <div class="container">
             <div class="forms-container">
                 <div class="infor">
-                    <form action="InfoControl" class="infor-form"> <%-- Information Control --%>
+                    <form action="InfoControl" class="infor-form" method="post"> <%-- Information Control --%>
                         <h2 class="title">Your Profile</h2>
 
-                        <%String username = (String) request.getAttribute("username");%>
-                        <input type="hidden" value="<%= username%>" name="username">
+                        <%
+                            Users user = (Users) session.getAttribute("user");
 
+                            if (user == null) {
+                                response.sendRedirect("SignIn.jsp");
+                            }
+
+                            UserDAO userDAO = new UserDAO();
+
+                            String ID = null;
+                            if (user.getUsertype().equals("Student")) {
+                                ID = userDAO.getStudentID(user.getUsername());
+                            } else if (user.getUsertype().equals("Landlord")) {
+                                ID = userDAO.getLandlordID(user.getUsername());
+                            } else {
+                                ID = userDAO.getStaffID(user.getUsername());
+                            }
+
+                            if (ID == null) {
+                        %>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="ID" name="ID" required>
                         </div>
+                        <%
+                            } else {
+                        %>
+                        <!--<div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="ID: <%=ID%>" name="ID" value="<%=ID%>">
+                        </div>-->
+                        <%
+                            }
+                        %>
 
+                        <input type="hidden" name="username" value="<%=user.getUsername()%>">
+                        <input type="hidden" name="type" value="<%=user.getUsertype()%>">
+                        
                         <div class="input-field">
                             <i class="fas fa-user"></i>
                             <input type="text" placeholder="Full Name" name="fname" required>

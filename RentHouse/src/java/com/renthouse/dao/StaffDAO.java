@@ -5,7 +5,7 @@
  */
 package com.renthouse.dao;
 
-import com.renthouse.bean.Landlord;
+import com.renthouse.bean.Staff;
 import com.renthouse.context.DBcontext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,27 +17,17 @@ import java.util.List;
  *
  * @author Ren
  */
-public class LandlordDAO implements DAO<Landlord>{
+public class StaffDAO implements DAO<Staff>{
     
-    Connection conn = null; 
+    Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-
-    @Override
-    public List<Landlord> getList() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Landlord> getElement(String name) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public boolean addToUser(String username, String ID) {
         boolean b = false;
 
         try {
-            String query = "insert into Landlord values('" + ID + "','" + username + "');";
+            String query = "insert into Staff values('" + ID + "','" + username + "');";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 
@@ -51,27 +41,37 @@ public class LandlordDAO implements DAO<Landlord>{
     }
 
     @Override
-    public boolean add(Landlord landlord) throws SQLException {
+    public boolean add(Staff staff) throws SQLException {
         boolean b = false;
-        
+
         try {
-            String query = "insert into LandlordInfo (LandlordID, Landlord_Name, Landlord_Phone, Landlord_Email) "
+            String query = "insert into StaffInfo (StaffID, Staff_Name, Staff_Phone, Staff_Email) "
                     + "values (?, ?, ?, ?);";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
-            
-            ps.setString(1, landlord.getLandlordID());
-            ps.setString(2, landlord.getLandlordName());
-            ps.setString(3, landlord.getLandlordPhone());
-            ps.setString(4, landlord.getLandlordMail());
-            
+
+            ps.setString(1, staff.getStaffID());
+            ps.setString(2, staff.getStaffName());
+            ps.setString(3, staff.getStaffPhone());
+            ps.setString(4, staff.getStaffMail());
+
             rs = ps.executeQuery();
-            
+
             b = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return b;
+    }
+
+    @Override
+    public List<Staff> getList() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Staff> getElement(String name) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -80,7 +80,8 @@ public class LandlordDAO implements DAO<Landlord>{
     }
 
     @Override
-    public boolean update(Landlord item) throws SQLException {
+    public boolean update(Staff item) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

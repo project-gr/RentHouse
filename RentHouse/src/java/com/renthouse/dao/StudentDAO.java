@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +29,7 @@ public class StudentDAO implements DAO<Student> {
         boolean b = false;
 
         try {
-            String query = "insert into Student values(" + ID + ",'" + username + "');";
+            String query = "insert into Student values('" + ID + "','" + username + "');";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
 

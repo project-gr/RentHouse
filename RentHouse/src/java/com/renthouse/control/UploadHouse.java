@@ -5,30 +5,24 @@
  */
 package com.renthouse.control;
 
-import com.renthouse.bean.Landlord;
-import com.renthouse.bean.Staff;
-import com.renthouse.bean.Student;
-import com.renthouse.bean.Users;
-import com.renthouse.dao.LandlordDAO;
-import com.renthouse.dao.StaffDAO;
-import com.renthouse.dao.StudentDAO;
-import com.renthouse.dao.UserDAO;
+import com.renthouse.bean.House;
+import com.renthouse.dao.HouseDAO;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
- * @author Ren
+ * @author ADMIN
  */
-@WebServlet(name = "InfoControl", urlPatterns = {"/InfoControl"})
-public class InfoControl extends HttpServlet {
+@WebServlet(name = "UploadHouse", urlPatterns = {"/UploadHouse"})
+public class UploadHouse extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,48 +33,41 @@ public class InfoControl extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            
             /* TODO output your page here. You may use following sample code. */
-            String fname = request.getParameter("fname");
-            String ID = request.getParameter("ID");
-            String email = request.getParameter("email");
-            String phone = request.getParameter("phone");
+            String address, street, district, city, description;
+            int houseno = Integer.parseInt(request.getParameter("HouseNo"));
+            float price = Float.parseFloat(request.getParameter("Price"));
+            address = request.getParameter("Address");
+            street = request.getParameter("Street");
+            district = request.getParameter("District");
+            city = request.getParameter("City");
+            description = request.getParameter("Description");
 
-            String username = request.getParameter("username");
-            String type = request.getParameter("type");
+//          Lay File Hinh Ne
+            Part part = request.getPart("coverImage");
+            String fileName = extractFileName(part);
+            String savePath = File.separator + fileName;
+            File fileSaveDir = new File(savePath);
+            part.write(savePath + File.separator);
             
-            out.print(type);
+            String ID = "0";
+            int House_Status = 0;
+            HouseDAO houseDAO = new HouseDAO();
+            House house, house1;
+            house = new House();
             
-            if (type.equals("Landlord")) {
-                LandlordDAO landlordDAO = new LandlordDAO();
-                Landlord landlord = new Landlord(ID, fname, phone, email);
-                landlordDAO.add(landlord);
-                
-                landlordDAO.addToUser(username, ID);
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
-            } else if (type.equals("Student")) {
-                StudentDAO studentDAO = new StudentDAO();
-                Student student = new Student(ID, fname, phone, email, 0);
-                studentDAO.add(student);
-                
-                studentDAO.addToUser(username, ID);
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
-            } else if (type.equals("Staff")) {
-                StaffDAO staffDAO = new StaffDAO();
-                Staff staff = new Staff(ID, fname, phone, email);
-                staffDAO.add(staff);
-                
-                staffDAO.addToUser(username, ID);
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(InfoControl.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+            house1 = new House(ID, houseno, address, street, district, city, description, savePath, price, House_Status);
+            
+            house = houseDAO.add(house1);
+            response.sendRedirect("Home.jsp");
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -96,7 +83,6 @@ public class InfoControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**
@@ -122,5 +108,17 @@ public class InfoControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
+
 
 }

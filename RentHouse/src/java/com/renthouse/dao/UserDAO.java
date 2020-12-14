@@ -5,6 +5,9 @@
  */
 package com.renthouse.dao;
 
+import com.renthouse.bean.Landlord;
+import com.renthouse.bean.Staff;
+import com.renthouse.bean.Student;
 import com.renthouse.bean.Users;
 import com.renthouse.context.DBcontext;
 import java.sql.Connection;
@@ -47,24 +50,135 @@ public class UserDAO implements DAO<Users> {
         return null;
     }
 
-    public String getID(String username) {
+    public Student getStudent(String username) {
         try {
-            String query = "select * from StudentInfo"
-                    + "inner join dbo.Student as S"
-                    + "on StudentInfo.StudentID = S.StudentID"
-                    + "where S.Username = ?;";
-            
-            conn = new DBcontext().getConnection();
+            String query = "select * from StudentInfo\n"
+                    + "inner join dbo.Student as S\n"
+                    + "on StudentInfo.StudentID = S.StudentID\n"
+                    + "where S.Username = ?";
+
+            conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
-            
+
             ps.setString(1, username);
-            
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Student student = new Student(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+                return student;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public Landlord getLandlord(String username) {
+        try {
+            String query = "select * from LandlordInfo\n"
+                    + "inner join dbo.Landlord as S\n"
+                    + "on LandlordInfo.LandlordID = S.LandlordID\n"
+                    + "where S.Username = ?";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, username);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Landlord landlord = new Landlord(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                return landlord;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public Staff getStaff(String username) {
+        try {
+            String query = "select * from StaffInfo\n"
+                    + "inner join dbo.Staff as S\n"
+                    + "on StaffInfo.StaffID = S.StaffID\n"
+                    + "where S.Username = ?";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, username);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Staff staff = new Staff(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                return staff;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public String getStudentID(String username) {
+        try {
+            String query = "select StudentID from Student where Username = ?";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, username);
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 String ID = rs.getString(1);
                 return ID;
             }
-            
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public String getLandlordID(String username) {
+        try {
+            String query = "select LandlordID from Landlord where Username = ?";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, username);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String ID = rs.getString(1);
+                return ID;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public String getStaffID(String username) {
+        try {
+            String query = "select StaffID from Staff where Username = ?";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, username);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String ID = rs.getString(1);
+                return ID;
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
