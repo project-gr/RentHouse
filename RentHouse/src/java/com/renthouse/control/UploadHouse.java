@@ -10,6 +10,9 @@ import com.renthouse.dao.HouseDAO;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,16 +41,14 @@ public class UploadHouse extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            
             /* TODO output your page here. You may use following sample code. */
-            String address, street, district, city, description;
             int houseno = Integer.parseInt(request.getParameter("HouseNo"));
             float price = Float.parseFloat(request.getParameter("Price"));
-            address = request.getParameter("Address");
-            street = request.getParameter("Street");
-            district = request.getParameter("District");
-            city = request.getParameter("City");
-            description = request.getParameter("Description");
+            String address = request.getParameter("Address");
+            String street = request.getParameter("Street");
+            String district = request.getParameter("District");
+            String city = request.getParameter("City");
+            String description = request.getParameter("Description");
 
 //          Lay File Hinh Ne
             Part part = request.getPart("coverImage");
@@ -56,17 +57,21 @@ public class UploadHouse extends HttpServlet {
             File fileSaveDir = new File(savePath);
             part.write(savePath + File.separator);
             
-            String ID = "0";
-            int House_Status = 0;
+            House house = new House(houseno, address, street, district, city, description, savePath, price);
             HouseDAO houseDAO = new HouseDAO();
-            House house, house1;
-            house = new House();
-            
-            house1 = new House(ID, houseno, address, street, district, city, description, savePath, price, House_Status);
-            
-            house = houseDAO.add(house1);
+            houseDAO.add(house);
+//            String ID = "0";
+//            int House_Status = 0;
+//            HouseDAO houseDAO = new HouseDAO();
+//            House house, house1;
+//            house = new House();
+//            
+//            house1 = new House(ID, houseno, address, street, district, city, description, savePath, price, House_Status);
+//            
+//            house = houseDAO.add(house1);
             response.sendRedirect("Home.jsp");
-            out.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UploadHouse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
