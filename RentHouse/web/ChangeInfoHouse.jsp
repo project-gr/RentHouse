@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddHouse
-    Created on : Dec 14, 2020, 4:28:55 AM
+    Document   : ChangeInfoHouse
+    Created on : Dec 15, 2020, 11:59:29 PM
     Author     : ADMIN
 --%>
 
@@ -11,40 +11,27 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Upload House</title>
+        <title>Information Of House</title>
         <script src="https://kit.fontawesome.com/64d58efce2.js"></script>
         <link rel="stylesheet" type="text/css" href="cssProfile.css">
 
     </head>
     <body>
-        <form action="UploadHouse" method="post" enctype="multipart/form-data">
+        <form action="ChangeHouseServlet" method="post" enctype="multipart/form-data">
             <header>
                 <%@ include file="Header.jsp" %>
             </header>
-            <center>
-                <%  user = (Users) session.getAttribute("user");
-
-                    if (user == null) {
-                        response.sendRedirect("SignIn.jsp");
-                    }
-
-                    UserDAO userDAO = new UserDAO();
-
-                    String ID = userDAO.getLandlordID(user.getUsername());
-                    Landlord landlord = userDAO.getLandlord(user.getUsername());
-                %>
-
-                <input type="hidden" name="ID" value="<%=landlord.getLandlordID()%>">
-
+            <center>                
+                <h2>Change Information Of House</h2>
                 <div class="wrapper-profile">
                     <div class="left">
                         <div class="info-data">
                             <div class="data" style="padding-top: 17%;">
-                                <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage" required/>
+                                <input type="file" placeholder="Cover Image" name="coverImage" id="coverImage"/>
                             </div>
                             <div class="data" style="padding-top: 65%;">
                                 <h4>Price</h4>
-                                <input type="text" name="Price" required="required">
+                                <input type="text" name="Price">
                             </div>
                         </div>
                     </div>
@@ -61,12 +48,12 @@
                             <h3>Address</h3>
                             <div class="info-data">
                                 <div class="data">
-                                    <input type="text" name="Address" placeholder="Apartment Number" required="required">
-                                    <input type="text" name="Street" placeholder="Street" required="required">
+                                    <input type="text" name="Address" placeholder="Apartment Number">
+                                    <input type="text" name="Street" placeholder="Street">
                                 </div>
                                 <div class="data">
-                                    <input type="text" name="District" placeholder="District" required="required">
-                                    <input type="text" name="City" placeholder="City" required="required">
+                                    <input type="text" name="District" placeholder="District">
+                                    <input type="text" name="City" placeholder="City">
                                 </div>
                             </div>
                         </div>
@@ -75,7 +62,7 @@
                             <h3>Details</h3>
                             <div class="house-data">
                                 <div class="data">
-                                    <h4>No.O.Houses</h4>
+                                    <h4>No.O.Rooms</h4>
                                     <input type="text" name="houseno" required="required">
                                 </div>
                                 <div class="data">
@@ -84,7 +71,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" value="Upload" class="btn solid">
+                        <input type="submit" value="Save" class="btn solid">
+                        <input onclick="location.href = 'Profile.jsp'" type="reset" value="Cancel" class="btn solid">
                     </div>
                 </div>
             </center>

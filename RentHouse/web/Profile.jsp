@@ -25,7 +25,7 @@
         </header>
     <center>
 
-        <%            user = (Users) session.getAttribute("user");
+        <%  user = (Users) session.getAttribute("user");
 
             if (user == null) {
                 response.sendRedirect("SignIn.jsp");
@@ -68,31 +68,36 @@
                 <div class="house">
                     <h3>Houses</h3>
                     <div class="house-data">
-                        <!--                        <div class="data">
-                                                    <h4>No.O.Houses</h4>
-                                                    <p>6</p>
-                                                    số nhà landlord đang sở hữu
-                                                </div>-->
                         <div class="data">
                             <h4>List</h4>
-
                             <p>
                                 <%
+                                    int count = 0;
                                     for (House h : listHouse) {
                                 %>
 
-                                <a href="#"><%=h.getHouseID()%>
-                                    <%
-                                        }
-                                    %>
+                                <a href="#"><%=h.getHouseID()%></a>
+                                <%
+                                        count++;
+                                    }
+                                %>
                             </p>
                             <!--liệt kê nhà mà landlord đã đăng ký trên web-->
+                        </div>
+
+                        <div class="data">
+                            <h4>No.O.Houses</h4>
+                            <p><%=count%></p>
                         </div>
                     </div>
                 </div>
 
                 <div>
+                    <button class="btn transparent" onclick="location.href = 'CreateInfo.jsp'">Change Information</button>
                     <button class="btn transparent" onclick="location.href = 'AddHouse.jsp'">Add House</button>
+                </div>
+                <div>
+                    <button class="btn transparent" onclick="location.href = 'ChangeInfoHouse.jsp'">Change Information Of House</button>
                 </div>
             </div>
         </div>

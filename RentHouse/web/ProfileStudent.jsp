@@ -4,6 +4,9 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.renthouse.dao.StudentDAO"%>
+<%@page import="com.renthouse.bean.Student"%>
+<%@page import="com.renthouse.dao.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,12 +21,24 @@
             <%@ include file="Header.jsp" %>
         </header>
     <center>
+        <%            user = (Users) session.getAttribute("user");
+
+            if (user == null) {
+                response.sendRedirect("SignIn.jsp");
+            }
+
+            UserDAO userDAO = new UserDAO();
+
+            String ID = userDAO.getStudentID(user.getUsername());
+            Student student = userDAO.getStudent(user.getUsername());
+            StudentDAO studentDAO = new StudentDAO();
+        %>
         <div class="wrapper-profile">
             <div class="left">
                 <img src="profile.svg" alt="user" width="160">
-                <h4>Dang Viet Hung</h4>
+                <h4><%=student.getStudentName()%></h4>
                 <!--tên user. dùng query-->
-                <p>123456789</p>
+                <p><%=student.getStudentID()%></p>
                 <!--chứng minh thư của user. dùng query-->
             </div>
             <div class="right">
@@ -32,12 +47,12 @@
                     <div class="info-data">
                         <div class="data">
                             <h4>Email</h4>
-                            <p>nohobao@gmail.com</p>
+                            <p><%=student.getStudentMail()%></p>
                             <!--email của user. dùng query-->
                         </div>
                         <div class="data">
                             <h4>Phone</h4>
-                            <p>+1 234 567 890</p>
+                            <p><%=student.getStudentPhone()%></p>
                             <!--phone của user. dùng query-->
                         </div>
                     </div>
@@ -48,30 +63,25 @@
                     <div class="house-data">
                         <div class="data">
                             <h4>Status</h4>
-                            <p class="status">Rented</p>
+                            <p class="status"><%=student.getStatus()%></p>
                             <!--trạng thái của student/ thuê hay chưa thuê-->
                         </div>
                         <div class="data">
                             <h4>List</h4>
                             <p>
-                                <a href="#">H123</a>
+                                <a href="#"></a>
                             </p>
                             <!--nhà mà student đang thuê-->
                         </div>
                     </div>
                 </div>
 
-                <div class="social-media">
-                    <ul>
-                        <li><a href="=#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="=#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="=#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="=#"><i class="fab fa-youtube"></i></a></li>
-                    </ul>
+                <div>
+                    <button class="btn transparent" onclick="location.href = 'CreateInfo.jsp'">Change Information</button>
                 </div>
             </div>
         </div>
     </center>
-        <%@ include file="Footer.jsp" %>
+    <%@ include file="Footer.jsp" %>
 </body>
 </html>

@@ -17,12 +17,12 @@ import java.util.List;
  *
  * @author Ren
  */
-public class StaffDAO implements DAO<Staff>{
-    
+public class StaffDAO implements DAO<Staff> {
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
+
     public boolean addToUser(String username, String ID) {
         boolean b = false;
 
@@ -83,5 +83,5 @@ public class StaffDAO implements DAO<Staff>{
     public boolean update(Staff item) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

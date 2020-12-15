@@ -21,14 +21,23 @@ body {
     background-color: #e9e9e9;
 }
 
+
 .wrapper-profile{
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: 2%;
     position: relative;
-    width: 700px;
-    height: 400px;
+    width: 675px;
+    height: 430px;
     display: flex;
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+}
+
+h2{
+    margin-top: 22px;
+    border-bottom: 1px solid #414141;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
 }
 
 .wrapper-profile .left {

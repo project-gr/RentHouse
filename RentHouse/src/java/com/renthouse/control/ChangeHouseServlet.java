@@ -7,12 +7,10 @@ package com.renthouse.control;
 
 import com.renthouse.bean.House;
 import com.renthouse.dao.HouseDAO;
-import com.renthouse.dao.LandlordDAO;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,27 +21,50 @@ import javax.servlet.http.Part;
  *
  * @author ADMIN
  */
-@WebServlet(name = "UploadHouse", urlPatterns = {"/UploadHouse"})
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-public class UploadHouse extends HttpServlet {
+@WebServlet(name = "ChangeHouseServlet", urlPatterns = {"/ChangeHouseServlet"})
+public class ChangeHouseServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            
         }
     }
 
-    String address, street, district, city, description, HouseID;
-    int houseno;
-    float price;
-
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,6 +78,10 @@ public class UploadHouse extends HttpServlet {
             File fileSaveDir = new File(savePath);
             part.write(savePath + File.separator);
             
+            String address, street, district, city, description, HouseID;
+            float price;
+            int houseno;
+            
             HouseID = request.getParameter("HouseID");
             address = request.getParameter("Address");
             street = request.getParameter("Street");
@@ -66,22 +91,21 @@ public class UploadHouse extends HttpServlet {
             price = Float.parseFloat(request.getParameter("Price"));
             houseno = Integer.parseInt(request.getParameter("houseno"));
             
-            String ID = request.getParameter("ID");
+            out.print(HouseID + " and " + price);
             
             HouseDAO houseDAO = new HouseDAO();
-            House house, house1;
-            house = new House();
-            house1 = new House(HouseID, houseno, address, street, district, city, description, savePath, price, 0);
-            house = houseDAO.addHouse(house1);
+            House house = new House(HouseID, houseno, address, street, district, city, description, savePath, price, 0);
+            houseDAO.update(house);
+            response.sendRedirect("Home.jsp");
             
-            LandlordDAO landlordDAO = new LandlordDAO();
-            landlordDAO.addToHouse(ID, HouseID);        
             
-            response.sendRedirect("Profile.jsp");
-        }
+        }    }
 
-    }
-
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

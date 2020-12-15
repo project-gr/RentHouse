@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://kit.fontawesome.com/64d58efce2.js"></script>
         <link rel="stylesheet" type="text/css" href="cssFooter.css">
+        <link rel="stylesheet" type="text/css" href="scroll_to_top.css">
     </head>
     <body>
         <footer>
@@ -28,7 +29,7 @@
                         <li><a href="#"><i class="fab fa-youtube"></i></a></li>
                     </ul>
                 </div>
-                
+
                 <div class="sec quickLinks">
                     <h2>Quick Links</h2>
                     <ul>
@@ -40,7 +41,7 @@
                         <li><a href="ContactUs.jsp">Contact Us</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="sec contact">
                     <h2>Contact Info</h2>
                     <ul class="info">
@@ -70,8 +71,10 @@
                 </div>
             </div>
         </footer>
+        <a id="back2Top" title="Back to top" href="#">&#10148;</a>
         <div class="copyrightText">
             <p>Copyright © 2020 Online Renting House. All Rights Reversed.</p>
         </div>
+        <script type="text/javascript" src="scroll_to_top.js"></script>
     </body>
 </html>

@@ -25,6 +25,7 @@ public class LandlordDAO implements DAO<Landlord> {
     PreparedStatement ps = null;
     ResultSet rs = null;
     
+    
     public boolean addToHouse (String LandlordID, String HouseID){
         boolean b = false;
         try {
