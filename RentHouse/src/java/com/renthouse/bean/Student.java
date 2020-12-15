@@ -10,7 +10,7 @@ package com.renthouse.bean;
  * @author Ren
  */
 public class Student {
-    
+
     private String studentID;
     private String studentName;
     private String studentPhone;
@@ -64,8 +64,18 @@ public class Student {
         return studentStatus;
     }
 
+    public String getStatus() {
+        String status = "";
+        if (studentStatus == 0) {
+            status += "Available";
+        } else {
+            status += "Rented";
+        }
+        return status;
+    }
+
     public void setStudentStatus(int studentStatus) {
         this.studentStatus = studentStatus;
     }
-    
+
 }

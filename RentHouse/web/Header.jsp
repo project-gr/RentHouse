@@ -15,6 +15,8 @@
         <link rel="stylesheet" type="text/css" href="cssHeader.css">
     </head>
     <body>
+        
+        
         <header>
             <div class="container">
                 <!--<input type="checkbox" name="" id="check">-->
@@ -146,7 +148,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        
+
                                         <li class="dropdown-link">
                                             <a href="SearchControl?type=City&search=Can Tho">Can Tho<i class="fas fa-caret-down"></i></a>
                                             <div class="dropdown second">
@@ -198,7 +200,7 @@
                     } else {
                     %>
                     <div class="log-sign">
-                        <a href="Profile.jsp" class="btn transparent">Profile</a>
+                        <a href="CheckProfile.jsp" class="btn transparent">Profile</a>
                         <a href="SignOut.jsp" class="btn solid">Sign Out</a>
                     </div>
                     <%

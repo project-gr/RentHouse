@@ -29,12 +29,10 @@
 
             UserDAO userDAO = new UserDAO();
 
-            String ID = userDAO.getLandlordID(user.getUsername());
+            String ID = userDAO.getStudentID(user.getUsername());
             Student student = userDAO.getStudent(user.getUsername());
             StudentDAO studentDAO = new StudentDAO();
-//            List<House> listHouse = landlordDAO.getListHouse(landlord.getLandlordID());
-%>
-
+        %>
         <div class="wrapper-profile">
             <div class="left">
                 <img src="profile.svg" alt="user" width="160">
@@ -65,37 +63,21 @@
                     <div class="house-data">
                         <div class="data">
                             <h4>Status</h4>
-                            <%
-                                if (student.getStudentStatus() == 0) {
-                            %>
-                            <p class="status">Free</p>
-                            <%
-                            } else {
-                            %>
-                            <p class="status">Rented</p>
-                            <%
-                                }
-                            %>
-                            
+                            <p class="status"><%=student.getStatus()%></p>
                             <!--trạng thái của student/ thuê hay chưa thuê-->
                         </div>
                         <div class="data">
                             <h4>List</h4>
                             <p>
-                                <!--<a href="#">H123</a>-->
+                                <a href="#"></a>
                             </p>
                             <!--nhà mà student đang thuê-->
                         </div>
                     </div>
                 </div>
 
-                <div class="social-media">
-                    <ul>
-                        <li><a href="=#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="=#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="=#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="=#"><i class="fab fa-youtube"></i></a></li>
-                    </ul>
+                <div>
+                    <button class="btn transparent" onclick="location.href = 'CreateInfo.jsp'">Change Information</button>
                 </div>
             </div>
         </div>

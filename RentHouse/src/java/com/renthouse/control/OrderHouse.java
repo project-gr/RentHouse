@@ -34,8 +34,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-@WebServlet(name = "forgotPassServlet", urlPatterns = {"/forgotPassServlet"})
-public class forgotPassServlet extends HttpServlet {
+@WebServlet(name = "OrderHouse", urlPatterns = {"/OrderHouse"})
+public class OrderHouse extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,23 +52,11 @@ public class forgotPassServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 
-            String username = request.getParameter("username");
-            UserDAO userDAO = new UserDAO();
-            Users user = new Users();
-            user = userDAO.selectUser(username);
-            String msg = user.getPassword();
-            String email;
-            if (user.getUsertype().equals("Student")) {
-                Student student = userDAO.getStudent(username);
-                email = student.getStudentMail();
-            } else if (user.getUsertype().equals("Landlord")) {
-                Landlord landlord = userDAO.getLandlord(username);
-                email = landlord.getLandlordMail();
-            } else {
-                Staff staff = userDAO.getStaff(username);
-                email = staff.getStaffMail();
-            }
-
+            String fname = request.getParameter("fname");
+            String msg = request.getParameter("message");
+            String email = request.getParameter("email");
+            String phone = request.getParameter("phone");
+            
             final String to = "elevengroupp@gmail.com";//your email id
             final String password = "elevengroup11";// your password
             Properties props = new Properties();
@@ -89,12 +77,16 @@ public class forgotPassServlet extends HttpServlet {
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
                 MimeBodyPart textPart = new MimeBodyPart();
                 Multipart multipart = new MimeMultipart();
-                String final_Text = "Dear: " + email + "\nYour Password: " + msg;
+                String final_Text = "Dear: " + fname + "\nWe have received your tenancy request with the message below: \n"
+                        + msg 
+                        + "\nThis is your tenancy confirmation email."
+                        + "\nWe will contact the landlord and schedule a home viewing with you by phone number: " + phone
+                        +"\nThanks with regards!";
                 textPart.setText(final_Text);
-                message.setSubject("Forgot password");
+                message.setSubject("Your Confirmation Email");
                 multipart.addBodyPart(textPart);
                 message.setContent(multipart);
-                message.setSubject("Contact Details");
+                message.setSubject("Your Confirmation Email");
                 //out.println("Sending");
                 Transport.send(message);
                 out.println("<center><h2 style='color:green;'>Email Sent Successfully.</h2>");

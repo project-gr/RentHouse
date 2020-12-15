@@ -168,7 +168,7 @@ public class HouseDAO implements DAO<House> {
     }
     public House addHouse(House house) {
         try {
-            String query = "insert into House values('0'," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
+            String query = "insert into House values('" + house.getHouseID() + "'," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
                     + house.getDistrict() + "', '" + house.getCity() + "' ,'" + house.getDescription() + "', '" 
                     + house.getCoverImage() + "', " + house.getPrice() + ", 0);";
             conn = DBcontext.getConnection();
@@ -198,7 +198,23 @@ public class HouseDAO implements DAO<House> {
     }
 
     @Override
-    public boolean update(House item) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(House house) {
+        boolean b = false;
+
+        try {
+            String query = "update House set House_No = '" + house.getHouseNo()
+                    + "', Address = '" + house.getAddress() + "', Street = '" + house.getStreet()
+                    + "', District = '" + house.getDistrict() + "', City = '" + house.getCity() 
+                    + "', Descriptions = '" + house.getDescription() + "', CoverImage = '" + house.getCoverImage()
+                    + "', Price = " + house.getPrice() + " where HouseID = '" + house.getHouseID() + "';";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            b = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
     }
 }
