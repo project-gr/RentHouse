@@ -44,13 +44,13 @@ public class LoginControl extends HttpServlet {
 
             if (user == null) {
                 request.getRequestDispatcher("SignIn.jsp").include(request, response);
-            } else if (user.getUsertype() == "Student") {
+            } else if (user.getUsertype().equals("Student")) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 response.sendRedirect("ProfileStudent.jsp");
 //                request.getRequestDispatcher("Home.jsp").forward(request, response);
                 
-            } else if (user.getUsertype() == "Landlord") {
+            } else if (user.getUsertype().equals("Landlord")) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 response.sendRedirect("Profile.jsp");

@@ -4,6 +4,9 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.renthouse.dao.StudentDAO"%>
+<%@page import="com.renthouse.bean.Student"%>
+<%@page import="com.renthouse.dao.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,12 +21,26 @@
             <%@ include file="Header.jsp" %>
         </header>
     <center>
+        <%            user = (Users) session.getAttribute("user");
+
+            if (user == null) {
+                response.sendRedirect("SignIn.jsp");
+            }
+
+            UserDAO userDAO = new UserDAO();
+
+            String ID = userDAO.getLandlordID(user.getUsername());
+            Student student = userDAO.getStudent(user.getUsername());
+            StudentDAO studentDAO = new StudentDAO();
+//            List<House> listHouse = landlordDAO.getListHouse(landlord.getLandlordID());
+%>
+
         <div class="wrapper-profile">
             <div class="left">
                 <img src="profile.svg" alt="user" width="160">
-                <h4>Dang Viet Hung</h4>
+                <h4><%=student.getStudentName()%></h4>
                 <!--tên user. dùng query-->
-                <p>123456789</p>
+                <p><%=student.getStudentID()%></p>
                 <!--chứng minh thư của user. dùng query-->
             </div>
             <div class="right">
@@ -32,12 +49,12 @@
                     <div class="info-data">
                         <div class="data">
                             <h4>Email</h4>
-                            <p>nohobao@gmail.com</p>
+                            <p><%=student.getStudentMail()%></p>
                             <!--email của user. dùng query-->
                         </div>
                         <div class="data">
                             <h4>Phone</h4>
-                            <p>+1 234 567 890</p>
+                            <p><%=student.getStudentPhone()%></p>
                             <!--phone của user. dùng query-->
                         </div>
                     </div>
@@ -48,13 +65,24 @@
                     <div class="house-data">
                         <div class="data">
                             <h4>Status</h4>
+                            <%
+                                if (student.getStudentStatus() == 0) {
+                            %>
+                            <p class="status">Free</p>
+                            <%
+                            } else {
+                            %>
                             <p class="status">Rented</p>
+                            <%
+                                }
+                            %>
+                            
                             <!--trạng thái của student/ thuê hay chưa thuê-->
                         </div>
                         <div class="data">
                             <h4>List</h4>
                             <p>
-                                <a href="#">H123</a>
+                                <!--<a href="#">H123</a>-->
                             </p>
                             <!--nhà mà student đang thuê-->
                         </div>
@@ -72,6 +100,6 @@
             </div>
         </div>
     </center>
-        <%@ include file="Footer.jsp" %>
+    <%@ include file="Footer.jsp" %>
 </body>
 </html>

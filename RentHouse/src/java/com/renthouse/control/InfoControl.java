@@ -61,21 +61,21 @@ public class InfoControl extends HttpServlet {
                 landlordDAO.add(landlord);
                 
                 landlordDAO.addToUser(username, ID);
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                request.getRequestDispatcher("Profile.jsp").forward(request, response);
             } else if (type.equals("Student")) {
                 StudentDAO studentDAO = new StudentDAO();
                 Student student = new Student(ID, fname, phone, email, 0);
                 studentDAO.add(student);
                 
                 studentDAO.addToUser(username, ID);
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                request.getRequestDispatcher("ProfileStudent.jsp").forward(request, response);
             } else if (type.equals("Staff")) {
                 StaffDAO staffDAO = new StaffDAO();
                 Staff staff = new Staff(ID, fname, phone, email);
                 staffDAO.add(staff);
                 
                 staffDAO.addToUser(username, ID);
-                request.getRequestDispatcher("Home.jsp").forward(request, response);
+                request.getRequestDispatcher("Profile.jsp").forward(request, response);
             }
 
         } catch (Exception ex) {
