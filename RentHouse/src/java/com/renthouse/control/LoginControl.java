@@ -5,7 +5,9 @@
  */
 package com.renthouse.control;
 
+import com.renthouse.bean.Student;
 import com.renthouse.bean.Users;
+import com.renthouse.dao.StudentDAO;
 import com.renthouse.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,23 +45,27 @@ public class LoginControl extends HttpServlet {
             Users user = userDAO.checkLogin(username, password);
 
             if (user == null) {
-                request.getRequestDispatcher("SignIn.jsp").include(request, response);
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('User or password incorrect');");
+                out.println("location='SignIn.jsp';");
+                out.println("</script>");
+//                request.getRequestDispatcher("SignIn.jsp").include(request, response);
             } else if (user.getUsertype().equals("Student")) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("ProfileStudent.jsp");
+                response.sendRedirect("CheckProfile.jsp");
 //                request.getRequestDispatcher("ProfileStudent.jsp").forward(request, response);
-                
+
             } else if (user.getUsertype().equals("Landlord")) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("Profile.jsp");
+                response.sendRedirect("CheckProfile.jsp");
 //                request.getRequestDispatcher("Home.jsp").forward(request, response);
-                
-            } else {
+
+            } else if (user.getUsertype().equals("Staff")) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("Profile.jsp");
+                response.sendRedirect("CheckProfile.jsp");
 //                request.getRequestDispatcher("Home.jsp").forward(request, response);
             }
         }

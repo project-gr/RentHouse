@@ -75,7 +75,7 @@
                             <h3>Details</h3>
                             <div class="house-data">
                                 <div class="data">
-                                    <h4>No.O.Houses</h4>
+                                    <h4>No.O.Rooms</h4>
                                     <input type="text" name="houseno" required="required">
                                 </div>
                                 <div class="data">

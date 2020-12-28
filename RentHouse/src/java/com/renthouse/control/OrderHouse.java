@@ -5,10 +5,12 @@
  */
 package com.renthouse.control;
 
+import com.renthouse.bean.House;
 import com.renthouse.bean.Landlord;
 import com.renthouse.bean.Staff;
 import com.renthouse.bean.Student;
 import com.renthouse.bean.Users;
+import com.renthouse.dao.HouseDAO;
 import com.renthouse.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,6 +31,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -51,12 +54,14 @@ public class OrderHouse extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
+            House house = (House) session.getAttribute("house");
 
             String fname = request.getParameter("fname");
             String msg = request.getParameter("message");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
-            
+
             final String to = "elevengroupp@gmail.com";//your email id
             final String password = "elevengroup11";// your password
             Properties props = new Properties();
@@ -64,7 +69,7 @@ public class OrderHouse extends HttpServlet {
             props.put("mail.smtp.starttls.enable", true);
             props.put("mail.smtp.host", "smtp.gmail.com");
             props.put("mail.smtp.port", "587");
-            Session session = Session.getInstance(props,
+            Session session1 = Session.getInstance(props,
                     new javax.mail.Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
@@ -72,16 +77,16 @@ public class OrderHouse extends HttpServlet {
                 }
             });
             try {
-                Message message = new MimeMessage(session);
+                Message message = new MimeMessage(session1);
                 message.setFrom(new InternetAddress(email));
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
                 MimeBodyPart textPart = new MimeBodyPart();
                 Multipart multipart = new MimeMultipart();
                 String final_Text = "Dear: " + fname + "\nWe have received your tenancy request with the message below: \n"
-                        + msg 
+                        + msg
                         + "\nThis is your tenancy confirmation email."
                         + "\nWe will contact the landlord and schedule a home viewing with you by phone number: " + phone
-                        +"\nThanks with regards!";
+                        + "\nThanks with regards!";
                 textPart.setText(final_Text);
                 message.setSubject("Your Confirmation Email");
                 multipart.addBodyPart(textPart);
@@ -89,9 +94,20 @@ public class OrderHouse extends HttpServlet {
                 message.setSubject("Your Confirmation Email");
                 //out.println("Sending");
                 Transport.send(message);
-                out.println("<center><h2 style='color:green;'>Email Sent Successfully.</h2>");
-                out.println("<a href=\"Home.jsp\"> Home </a>");
-                out.println("\nThank you " + email + ", your message has been submitted to us.</center>");
+
+                int status = (Integer) house.getHouseStatus();
+                int houseno = (Integer) house.getHouseNo();
+                out.print(status+" and " + houseno);
+                HouseDAO houseDAO = new HouseDAO();
+                if (houseno > 0) {
+                    int room = houseno - 1;
+                    houseDAO.updateRoom(room, house.getHouseID());
+                    if(room == 0){
+                        houseDAO.updateStatus(1, house.getHouseID());
+                    }
+                }
+                response.sendRedirect("Confirm.jsp");
+
             } catch (Exception e) {
                 out.println(e);
             }

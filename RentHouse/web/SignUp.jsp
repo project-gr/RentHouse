@@ -95,6 +95,7 @@
                             please press this button to Sign in!
                         </p>
                         <button class="btn transparent" onclick="location.href = 'SignIn.jsp'">Sign in</button>
+                        <p>Comeback to <a href="Home.jsp">Home</a></p>
                     </div>
 
                     <img src="signUp.svg" class="image" alt="">

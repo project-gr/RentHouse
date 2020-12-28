@@ -22,6 +22,10 @@ $(document).ready(function() {
     });
 });
 
+function houseRented() {
+  alert("House is already rented./nPlease choose another one!!!!!");
+}
+
 function showPassword() {
     var x = document.getElementById('password');
     var y = document.getElementById('hide');
@@ -58,7 +62,17 @@ function Validate() {
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirmPassword").value;
     if (password !== confirmPassword) {
-        alert("Passwords didn't match, try again.");
+        window.alert("Passwords didn't match, try again.");
+        return false;
+    }
+    return true;
+}
+
+function ValidateSignIn() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    if (password !== confirmPassword) {
+        window.alert("Passwords didn't match, try again.");
         return false;
     }
     return true;

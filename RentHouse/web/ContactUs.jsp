@@ -67,7 +67,6 @@
                 </div>
                 
                 <div class="contactForm">
-                    <form>
                         <h2>Send Message</h2>
                         <div class="inputBox">
                             <input type="text" name="" required="required">
@@ -86,9 +85,8 @@
                             <!--type các vấn đề cần gặp phải. vd: tố cáo landlord lừa đảo,...-->
                         </div>
                         <div class="inputBox">
-                            <input type="submit" name="" value="Send">
+                            <input type="submit" name="" onclick="location.href = 'Confirm.jsp'" value="Send">
                         </div>
-                    </form>
                 </div>
             </div>
         </section>

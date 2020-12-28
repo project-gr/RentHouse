@@ -97,7 +97,8 @@
                     <button class="btn transparent" onclick="location.href = 'AddHouse.jsp'">Add House</button>
                 </div>
                 <div>
-                    <button class="btn transparent" onclick="location.href = 'ChangeInfoHouse.jsp'">Change Information Of House</button>
+                    <br>
+                    <button class="btn transparent" onclick="location.href = 'ChangeHouse.jsp'">Change Information Of House</button>
                 </div>
             </div>
         </div>

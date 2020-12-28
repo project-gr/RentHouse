@@ -97,9 +97,7 @@ public class forgotPassServlet extends HttpServlet {
                 message.setSubject("Contact Details");
                 //out.println("Sending");
                 Transport.send(message);
-                out.println("<center><h2 style='color:green;'>Email Sent Successfully.</h2>");
-                out.println("<a href=\"Home.jsp\"> Home </a>");
-                out.println("\nThank you " + email + ", your message has been submitted to us.</center>");
+                response.sendRedirect("Confirm.jsp");
             } catch (Exception e) {
                 out.println(e);
             }

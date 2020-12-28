@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,7 +26,34 @@ public class HouseDAO implements DAO<House> {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    
+
+    public Landlord getLandlord(String HouseID) {
+        Landlord landlord = new Landlord();
+        try {
+            String query = "select * from LandlordInfo as LI\n"
+                    + "inner join (Landlord_House as LH \n"
+                    + "	inner join House as H\n"
+                    + "	on LH.HouseID = H.HouseID)\n"
+                    + "on LI.LandlordID = LH.LandlordID\n"
+                    + "where H.HouseID = '" + HouseID + "';";
+
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                landlord.setLandlordID(rs.getString(1));
+                landlord.setLandlordName(rs.getString(2));
+                landlord.setLandlordPhone(rs.getString(3));
+                landlord.setLandlordMail(rs.getString(4));
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(HouseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return landlord;
+    }
+
     public String getHouseID(House house) {
         String ID = null;
         try {
@@ -45,8 +74,8 @@ public class HouseDAO implements DAO<House> {
             ps.setInt(9, house.getHouseStatus());
 
             rs = ps.executeQuery();
-            
-            while (rs.next()){
+
+            while (rs.next()) {
                 ID = rs.getString(1);
             }
         } catch (Exception e) {
@@ -94,8 +123,8 @@ public class HouseDAO implements DAO<House> {
         }
         return houseList;
     }
-    
-    public List<House> getHouseByDistrict (String name) {
+
+    public List<House> getHouseByDistrict(String name) {
         List<House> houseList = null;
         House house = null;
 
@@ -130,7 +159,7 @@ public class HouseDAO implements DAO<House> {
         }
         return houseList;
     }
-    
+
     public List<House> getHouseByCity(String name) {
         List<House> houseList = null;
         House house = null;
@@ -166,10 +195,11 @@ public class HouseDAO implements DAO<House> {
         }
         return houseList;
     }
+
     public House addHouse(House house) {
         try {
-            String query = "insert into House values('" + house.getHouseID() + "'," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '" 
-                    + house.getDistrict() + "', '" + house.getCity() + "' ,'" + house.getDescription() + "', '" 
+            String query = "insert into House values('" + house.getHouseID() + "'," + house.getHouseNo() + ", '" + house.getAddress() + "', '" + house.getStreet() + "', '"
+                    + house.getDistrict() + "', '" + house.getCity() + "' ,'" + house.getDescription() + "', '"
                     + house.getCoverImage() + "', " + house.getPrice() + ", 0);";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
@@ -180,7 +210,6 @@ public class HouseDAO implements DAO<House> {
         }
         return house;
     }
-
 
     @Override
     public List<House> getList() throws SQLException {
@@ -194,7 +223,22 @@ public class HouseDAO implements DAO<House> {
 
     @Override
     public boolean delete(String id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean b = false;
+
+        try {
+            String query = "delete from House where id = ?";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, id);
+
+            rs = ps.executeQuery();
+
+            b = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
     }
 
     @Override
@@ -202,11 +246,43 @@ public class HouseDAO implements DAO<House> {
         boolean b = false;
 
         try {
-            String query = "update House set House_No = '" + house.getHouseNo()
-                    + "', Address = '" + house.getAddress() + "', Street = '" + house.getStreet()
-                    + "', District = '" + house.getDistrict() + "', City = '" + house.getCity() 
-                    + "', Descriptions = '" + house.getDescription() + "', CoverImage = '" + house.getCoverImage()
-                    + "', Price = " + house.getPrice() + " where HouseID = '" + house.getHouseID() + "';";
+            String query = "update House set House_No = " + house.getHouseNo()
+                    + ", Address = '" + house.getAddress() + "', Street = '" + house.getStreet()
+                    + "', District = '" + house.getDistrict() + "', City = '" + house.getCity()
+                    + "', Descriptions = '" + house.getDescription() + "', "
+                    + "Price = " + house.getPrice() + ", House_Status = " + house.getHouseStatus() + " where HouseID = '" + house.getHouseID() + "';";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            b = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+    public boolean updateStatus(int status, String ID) {
+        boolean b = false;
+
+        try {
+            String query = "update House set House_Status = " + status + " where HouseID = '" + ID + "';";
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+
+            b = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
+    
+    public boolean updateRoom(int room, String ID) {
+        boolean b = false;
+
+        try {
+            String query = "update House set House_No = " + room + " where HouseID = '" + ID + "';";
             conn = DBcontext.getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();

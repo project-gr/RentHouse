@@ -32,7 +32,7 @@ a {
 }
 
 header {
-    position: -o-sticky;
+    /*position: -o-sticky;*/
     top: 0;
     margin-top: 0px;
     background-color: #F1F1F1;
@@ -409,9 +409,9 @@ header.sticky {
         background-color: #777777;
     }
 
-    .dropdown .dropdown .arrow {
+/*    .dropdown .dropdown .arrow {
         display: none;
-    }
+    }*/
 
     .dropdown-link:hover > a {
         background-color: #414141;

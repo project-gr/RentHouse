@@ -79,6 +79,7 @@
                                 please press this button to register an new account!
                             </p>
                             <button class="btn transparent" onclick="location.href = 'SignUp.jsp'">Sign up</button>
+                            <p>Comeback to <a href="Home.jsp">Home</a></p>
                         </div>
 
                         <img src="signIn.svg" class="image" alt="">

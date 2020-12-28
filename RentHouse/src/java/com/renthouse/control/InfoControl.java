@@ -66,10 +66,15 @@ public class InfoControl extends HttpServlet {
 
             String username = request.getParameter("username");
             String type = request.getParameter("type");
-
+            String ID = request.getParameter("ID");
             UserDAO userDAO = new UserDAO();
             if (type.equals("Landlord")) {
                 String LandlordID = userDAO.getLandlordID(username);
+                
+                LandlordDAO landlordDAO = new LandlordDAO();
+                Landlord landlord = new Landlord(ID,fname,phone,email);
+                landlordDAO.add(landlord);
+                landlordDAO.addToUser(ID, username);
                 statement = connection.createStatement();
 
                 String query = "update LandlordInfo set Landlord_Name = '" + fname + "', Landlord_Phone= '"
@@ -79,6 +84,10 @@ public class InfoControl extends HttpServlet {
                 request.getRequestDispatcher("Profile.jsp").forward(request, response);
             } else if (type.equals("Student")) {
                 String StudentID = userDAO.getStudentID(username);
+                StudentDAO studentDAO = new StudentDAO();
+                Student student = new Student(ID,fname,phone,email, 0);
+                studentDAO.add(student);
+                studentDAO.addToUser(ID, username);
 
                 statement = connection.createStatement();
 
@@ -90,6 +99,10 @@ public class InfoControl extends HttpServlet {
                 request.getRequestDispatcher("ProfileStudent.jsp").forward(request, response);
             } else if (type.equals("Staff")) {
                 String StaffID = userDAO.getStaffID(username);
+                StaffDAO staffDAO = new StaffDAO();
+                Staff staff = new Staff(ID,fname,phone,email);
+                staffDAO.add(staff);
+                staffDAO.addToUser(ID, username);
 
                 statement = connection.createStatement();
 

@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +26,28 @@ public class LandlordDAO implements DAO<Landlord> {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    
+    public Landlord selectLandlord(String LandlordID){
+        Landlord landlord = new Landlord();
+        try {
+            String query = "select * from LandlordInfo where LandlordID = '" + LandlordID + "';";
+            
+            conn = DBcontext.getConnection();
+            ps = conn.prepareStatement(query);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                landlord.setLandlordID(rs.getString(1));
+                landlord.setLandlordName(rs.getString(2));
+                landlord.setLandlordPhone(rs.getString(3));
+                landlord.setLandlordMail(rs.getString(4));
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(LandlordDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return landlord;
+    }
     
     
     public boolean addToHouse (String LandlordID, String HouseID){

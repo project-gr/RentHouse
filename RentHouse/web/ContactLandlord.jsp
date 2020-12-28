@@ -4,6 +4,10 @@
     Author     : ADMIN
 --%>
 
+<%@page import="com.renthouse.dao.HouseDAO"%>
+<%@page import="com.renthouse.dao.LandlordDAO"%>
+<%@page import="com.renthouse.bean.Landlord"%>
+<%@page import="com.renthouse.bean.House"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +21,13 @@
         <header>
             <%@ include file="Header.jsp" %>
         </header>
+        <%
+            HouseDAO houseDAO = new HouseDAO();
+            House house = (House) session.getAttribute("house");
+            String HouseID = house.getHouseID();
+            Landlord landlord = new Landlord();
+            landlord = houseDAO.getLandlord(HouseID);
+        %>
         <form action="OrderHouse" class="sign-in-form" method="post"> <%-- Login Control --%>
             <section class="contactLandlord">
                 <div class="content">
@@ -26,7 +37,7 @@
                         Fill out the email form below to schedule an appointment with landlord.
                         If you do not want to order this house, please press
                         <!-- gắn link vô chữ HERE để quay lại trang hiện kết quả search nhà trước đó-->
-                        <a href="#">HERE</a> to return.
+                        <a href="Home.jsp">HERE</a> to return.
                     </p>
                 </div>
                 <div class="container">
@@ -37,7 +48,7 @@
                             </div>
                             <div class="text">
                                 <h3>Name</h3>
-                                <p>Le Thi Phuong Linh</p>
+                                <p><%=landlord.getLandlordName()%></p>
                                 <!--tên landlord của ngôi nhà student đã chọn để order-->
                             </div>
                         </div>
@@ -47,7 +58,7 @@
                             </div>
                             <div class="text">
                                 <h3>Phone</h3>
-                                <p>+1 234 567 890</p>
+                                <p><%=landlord.getLandlordPhone()%></p>
                                 <!--số điện thoại landlord của ngôi nhà student đã chọn để order-->
                             </div>
                         </div>
@@ -57,7 +68,7 @@
                             </div>
                             <div class="text">
                                 <h3>Email</h3>
-                                <p>hyylinh2912@gmail.com</p>
+                                <p><%=landlord.getLandlordMail()%></p>
                                 <!--email landlord của ngôi nhà student đã chọn để order-->
                             </div>
                         </div>
